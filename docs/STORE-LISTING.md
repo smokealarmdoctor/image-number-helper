@@ -1,17 +1,22 @@
 # Chrome Web Store: v2 release checklist and listing copy
 
-## Release blockers (do these first, in order)
+## What the live listing is today (checked Nov 2026)
 
-1. **Keep existing PayPal buyers on Pro.** Every v1 install auto-updates to v2, and v2 doesn't recognise the old Pro unlock. Without a migration, paying customers silently drop to Free. Send the currently published v1 package or source (Developer Dashboard → Package, or the installed extension folder) so the v2 update can carry the old unlock over. As a fallback, email each PayPal buyer a new key with `node scripts/issue-key.mjs`.
-2. `npm run keys`: generate license signing keys and back up the private key.
-3. Deploy the license Worker, then run `npm run stripe:setup` with the **live** Stripe key (`docs/STRIPE-SETUP.md`). Decide on tax / Managed Payments first.
-4. Make one real $2.99 purchase and refund it, to confirm keys unlock end to end.
-5. Upload the video to YouTube (unlisted is fine). The store's promo-video field takes a YouTube URL, not an MP4.
-6. `npm run package`. It must build with no warnings.
+- **ID:** `oblgohgggijhcpaaimpcnkajklhfkelf`. Published **v2.0.0**, 661 installs.
+- **Everything in the published version is free:** no Pro tier, image limit, license or payment.
+- **v3.0.0 doesn't take anything away from those users.** Anyone updating from v1/v2 becomes a *founding user* with Pro free forever, and their settings carry over. This was tested against the real published package.
+
+## Release blockers
+
+1. **License server deployed** (Cloudflare Worker, or another host) and the live Stripe payment link pointed at it. The signing keys are already generated.
+2. **Tax decision** for live sales (Stripe Tax registrations, or Managed Payments as merchant of record).
+3. **One real $2.99 purchase, then a refund**, to confirm the whole flow.
+4. **Video on YouTube** (unlisted is fine). The store's video field needs a YouTube URL.
+5. `npm run package`, which then builds `dist/image-number-helper-3.0.0.zip`.
 
 ## Uploading
 
-Easiest is manual: Developer Dashboard → your item → **Package → Upload new package** → `dist/image-number-helper-2.0.0.zip`.
+Easiest is manual: Developer Dashboard → your item → **Package → Upload new package** → `dist/image-number-helper-3.0.0.zip`.
 
 Or automated: `node scripts/publish-cws.mjs` uploads a draft, and `--publish` submits it for review. It needs Chrome Web Store API OAuth credentials:
 - **Extension ID:** the 32-letter ID in the Dashboard.
@@ -20,7 +25,7 @@ Or automated: `node scripts/publish-cws.mjs` uploads a draft, and `--publish` su
 
 Supply these four values as environment variables. Never commit them.
 
-## Listing fields
+## Listing fields (English; other languages are in docs/store-listing-translations.md)
 
 **Name:** Image Number Helper – Number & Label Images on Any Page
 
@@ -38,8 +43,9 @@ Supply these four values as environment variables. Never commit them.
 > • Number the first 8 images on any page: press Alt+Shift+N or click the switch
 > • Click a number to copy “Image 7”, or right-click any image → Copy image number
 > • Jump to any image by number. The page scrolls there and spotlights it
+> • Number styles: 1, 2, 3 · A, B, C · 01, 02, 03 · I, II, III
 > • Numbers stay put while lazy images load; tiny icons are skipped
-> • Always-on for the sites you choose
+> • Always-on for the sites you choose, or everywhere
 >
 > PRO — $2.99 once, no subscription
 > • Unlimited numbers
