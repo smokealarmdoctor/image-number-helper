@@ -11,7 +11,7 @@ export const LICENSE_ORIGIN = 'https://image-number-helper-license.example.worke
 // ECDSA P-256 public keys that verify license keys offline. `npm run keys`
 // appends one; the matching private key lives only in the Worker secret.
 // Keep old entries: every key ever sold must keep verifying after a rotation.
-export const LICENSE_PUBLIC_JWK = [{"kty":"EC","crv":"P-256","x":"yL2q67po8PHBfPHEW1Iq7opRGlf94vHs1aeGCVlbBEs","y":"XrHjjunzZCHqu49m3iUSl6RCEum6ejzFOUe2rRZFTYE"}]; // @license-public-jwk
+export const LICENSE_PUBLIC_JWK = []; // @license-public-jwk
 
 export const PRICE_LABEL = '$2.99';
 export const FREE_LIMIT = 8;
