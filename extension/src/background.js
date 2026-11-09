@@ -5,7 +5,7 @@ import { normalizeKey, verifyLicense } from './license.js';
 async function activate(rawKey) {
   const key = normalizeKey(rawKey);
   const payload = await verifyLicense(key, LICENSE_PUBLIC_JWK);
-  if (!payload) return { ok: false, error: 'That key isn’t valid. Copy the whole key from your receipt page or email.' };
+  if (!payload) return { ok: false, error: chrome.i18n.getMessage('errInvalidKey') };
   await chrome.storage.sync.set({ license: key });
   await chrome.storage.local.set({ pro: { email: payload.email || '', iat: payload.iat || 0 } });
   return { ok: true, email: payload.email || '' };
@@ -43,12 +43,12 @@ function openUpgrade() {
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   chrome.contextMenus.create({
     id: 'inh-copy-number',
-    title: 'Copy image number',
+    title: chrome.i18n.getMessage('menuCopyNumber'),
     contexts: ['image'],
   });
   chrome.contextMenus.create({
     id: 'inh-toggle',
-    title: 'Show / hide image numbers',
+    title: chrome.i18n.getMessage('menuToggle'),
     contexts: ['page'],
   });
   if (reason === 'install') chrome.tabs.create({ url: chrome.runtime.getURL('src/welcome.html') });

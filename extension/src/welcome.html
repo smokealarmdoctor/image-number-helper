@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to Image Number Helper</title>
+  <title data-i18n="welcomeTitle">Welcome to Image Number Helper</title>
   <style>
     :root { --bg:#f7f8fa; --card:#fff; --text:#111418; --muted:#5d6673; --line:#e4e7ec; --accent:#e5243b; }
     @media (prefers-color-scheme: dark) { :root { --bg:#111418; --card:#1a1e24; --text:#eef1f5; --muted:#9aa4b2; --line:#2d333c; } }
@@ -35,27 +35,28 @@
     <div class="hero">
       <img class="mark" src="../icons/icon128.png" alt="" />
       <div>
-        <h1>You’re set. Say “image 7” and everyone knows which one.</h1>
-        <p class="lede">Image Number Helper puts a number on every image so feedback, QA and meetings stop pointing at “the one on the left.”</p>
+        <h1 data-i18n="welcomeH1"></h1>
+        <p class="lede" data-i18n="welcomeLede"></p>
       </div>
     </div>
 
     <div class="steps">
-      <div class="step"><b>1</b><h3>Pin it</h3><p>Click the puzzle icon in Chrome’s toolbar and pin <strong>Image Number Helper</strong>.</p></div>
-      <div class="step"><b>2</b><h3>Number a page</h3><p>Press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>N</kbd> or flip the switch in the popup.</p></div>
-      <div class="step"><b>3</b><h3>Click to copy</h3><p>Click any badge to copy “Image 7”. Type a number in the popup to jump straight to it.</p></div>
+      <div class="step"><b>1</b><h3 data-i18n="step1T"></h3><p data-i18n-html="step1B_html"></p></div>
+      <div class="step"><b>2</b><h3 data-i18n="step2T"></h3><p data-i18n-html="step2B_html"></p></div>
+      <div class="step"><b>3</b><h3 data-i18n="step3T"></h3><p data-i18n="step3B"></p></div>
     </div>
 
     <div class="try">
-      <h2>Try it on these</h2>
+      <h2 data-i18n="tryTitle"></h2>
       <div class="btns">
-        <button class="primary" id="on">Number these images</button>
-        <button id="jump">Jump to #7</button>
+        <button class="primary" id="on" data-i18n="tryOn"></button>
+        <button id="jump" data-i18n="tryJump"></button>
       </div>
     </div>
     <div class="gallery" id="gallery"></div>
-    <p class="note">Free numbers the first 8 images on any page. Pro numbers everything and adds the meeting report, numbered screenshots, colors and positions.</p>
+    <p class="note" data-i18n="welcomeNote"></p>
   </div>
+  <script src="i18n.js"></script>
   <script src="content.js"></script>
   <script src="welcome.js"></script>
 </body>

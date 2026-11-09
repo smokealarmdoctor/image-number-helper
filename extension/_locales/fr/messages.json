@@ -1,0 +1,367 @@
+{
+  "extName": {
+    "message": "Image Number Helper"
+  },
+  "extShortName": {
+    "message": "Image Numbers"
+  },
+  "extDesc": {
+    "message": "Numérote chaque image d’une page : en revue, en QA et en réunion, dites « image 7 » au lieu de « celle de gauche »."
+  },
+  "cmdToggle": {
+    "message": "Afficher / masquer les numéros sur cette page"
+  },
+  "actionTitle": {
+    "message": "Image Number Helper (Alt+Shift+N)"
+  },
+  "menuCopyNumber": {
+    "message": "Copier le numéro de l’image"
+  },
+  "menuToggle": {
+    "message": "Afficher / masquer les numéros"
+  },
+  "refImage": {
+    "message": "Image $N$",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "copied": {
+    "message": "Copié"
+  },
+  "moreImages_html": {
+    "message": "+$COUNT$ autres images · <b>Débloquer Pro</b>",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errInvalidKey": {
+    "message": "Cette clé n’est pas valide. Copiez la clé complète depuis la page de reçu ou l’e-mail."
+  },
+  "planFree": {
+    "message": "Gratuit"
+  },
+  "planPro": {
+    "message": "Pro"
+  },
+  "toggleTitle": {
+    "message": "Afficher / masquer les numéros (Alt+Shift+N)"
+  },
+  "showNumbers": {
+    "message": "Afficher les numéros"
+  },
+  "imagesNumberedOne": {
+    "message": "image numérotée"
+  },
+  "imagesNumberedMany": {
+    "message": "images numérotées"
+  },
+  "numbersOff": {
+    "message": "numéros désactivés"
+  },
+  "onHost": {
+    "message": "sur $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "offHint": {
+    "message": "$COUNT$ images sur $HOST$ · activez l’interrupteur",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
+  "meterCta": {
+    "message": "$SHOWN$ sur $TOTAL$ affichées — numérotez les $TOTAL$ avec Pro →",
+    "placeholders": {
+      "shown": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsupportedTitle": {
+    "message": "Ouvrez une page web classique"
+  },
+  "unsupportedBody": {
+    "message": "Chrome n’autorise pas les extensions sur les pages du navigateur ni sur le Web Store. Essayez n’importe quel site http ou https."
+  },
+  "goToImage": {
+    "message": "Aller à l’image"
+  },
+  "show": {
+    "message": "Voir"
+  },
+  "copyReport": {
+    "message": "Copier le rapport"
+  },
+  "screenshot": {
+    "message": "Capture"
+  },
+  "renumber": {
+    "message": "Renuméroter"
+  },
+  "alwaysOn_html": {
+    "message": "Toujours numéroter les images sur <b>$HOST$</b>",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "appearance": {
+    "message": "Apparence et options"
+  },
+  "color": {
+    "message": "Couleur"
+  },
+  "position": {
+    "message": "Position"
+  },
+  "size": {
+    "message": "Taille"
+  },
+  "skipSmaller": {
+    "message": "Ignorer les images de moins de"
+  },
+  "startAt": {
+    "message": "Commencer la numérotation à"
+  },
+  "reportFormat": {
+    "message": "Format du rapport"
+  },
+  "fmtMarkdown": {
+    "message": "Tableau Markdown"
+  },
+  "fmtText": {
+    "message": "Texte brut"
+  },
+  "fmtCsv": {
+    "message": "CSV (tableur)"
+  },
+  "colorRed": {
+    "message": "Rouge"
+  },
+  "colorBlue": {
+    "message": "Bleu"
+  },
+  "colorBlack": {
+    "message": "Noir"
+  },
+  "colorYellow": {
+    "message": "Jaune"
+  },
+  "colorGreen": {
+    "message": "Vert"
+  },
+  "colorPurple": {
+    "message": "Violet"
+  },
+  "posTL": {
+    "message": "En haut à gauche"
+  },
+  "posTR": {
+    "message": "En haut à droite"
+  },
+  "posC": {
+    "message": "Centre"
+  },
+  "posBL": {
+    "message": "En bas à gauche"
+  },
+  "posBR": {
+    "message": "En bas à droite"
+  },
+  "shortcut": {
+    "message": "Raccourci"
+  },
+  "upgradeCta": {
+    "message": "Passer à Pro · $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "proCheck": {
+    "message": "Pro ✓"
+  },
+  "back": {
+    "message": "Retour"
+  },
+  "buyHeadline_html": {
+    "message": "Numérotez toutes les images.<br>Payez une fois, gardez-le pour toujours."
+  },
+  "featureLocked_html": {
+    "message": "$FEATURE$ est une fonction Pro.<br>Payez une fois, gardez-la pour toujours.",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "featReport": {
+    "message": "Le rapport de réunion"
+  },
+  "featScreens": {
+    "message": "La capture numérotée"
+  },
+  "featColors": {
+    "message": "Plus de couleurs"
+  },
+  "featPosition": {
+    "message": "La position du badge"
+  },
+  "featStart": {
+    "message": "Le numéro de départ"
+  },
+  "perk1_html": {
+    "message": "<b>Numéros illimités</b>, pas seulement les 8 premières"
+  },
+  "perk2_html": {
+    "message": "<b>Rapport de réunion</b> : texte alternatif, tailles et fichiers en Markdown, texte ou CSV"
+  },
+  "perk3_html": {
+    "message": "<b>Captures numérotées</b> en un clic, prêtes pour Slack ou Jira"
+  },
+  "perk4_html": {
+    "message": "<b>6 couleurs, 5 positions</b>, numéro de départ au choix"
+  },
+  "perk5_html": {
+    "message": "<b>Toutes les futures fonctions Pro</b>, sur tous vos profils Chrome"
+  },
+  "getPro": {
+    "message": "Obtenir Pro — $PRICE$, une fois",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "fine": {
+    "message": "Paiement sécurisé par Stripe · Carte, Apple Pay, Google Pay · Remboursement sous 30 jours"
+  },
+  "haveKey": {
+    "message": "Déjà acheté ? Collez votre clé de licence"
+  },
+  "activate": {
+    "message": "Activer"
+  },
+  "lostKey": {
+    "message": "Clé perdue ?"
+  },
+  "checking": {
+    "message": "Vérification…"
+  },
+  "unlocked": {
+    "message": "Pro débloqué. Profitez-en !"
+  },
+  "somethingWrong": {
+    "message": "Une erreur s’est produite."
+  },
+  "youArePro": {
+    "message": "Vous êtes Pro"
+  },
+  "licensedTo_html": {
+    "message": "Licence au nom de <b>$EMAIL$</b>. Merci de soutenir un outil indépendant !",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "thisBrowser": {
+    "message": "ce navigateur"
+  },
+  "removeLicense": {
+    "message": "Retirer la licence de ce navigateur"
+  },
+  "noImage": {
+    "message": "Pas d’image n° $N$ sur cette page",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "reportCopied": {
+    "message": "Rapport de $COUNT$ images copié",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "clipboardFail": {
+    "message": "Impossible d’accéder au presse-papiers"
+  },
+  "turnOnFirst": {
+    "message": "Activez d’abord les numéros"
+  },
+  "shotSaved": {
+    "message": "Capture copiée et enregistrée"
+  },
+  "shotBlocked": {
+    "message": "Chrome a bloqué la capture sur cette page"
+  },
+  "renumbered": {
+    "message": "$COUNT$ images renumérotées de haut en bas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeTitle": {
+    "message": "Bienvenue dans Image Number Helper"
+  },
+  "welcomeH1": {
+    "message": "C’est prêt. Dites « image 7 » et tout le monde sait laquelle."
+  },
+  "welcomeLede": {
+    "message": "Image Number Helper place un numéro sur chaque image : fini « celle de gauche » dans les retours, la QA et les réunions."
+  },
+  "step1T": {
+    "message": "Épinglez-la"
+  },
+  "step1B_html": {
+    "message": "Cliquez sur l’icône puzzle de la barre Chrome et épinglez <strong>Image Number Helper</strong>."
+  },
+  "step2T": {
+    "message": "Numérotez une page"
+  },
+  "step2B_html": {
+    "message": "Appuyez sur <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>N</kbd> ou activez l’interrupteur du panneau."
+  },
+  "step3T": {
+    "message": "Cliquez pour copier"
+  },
+  "step3B": {
+    "message": "Cliquez sur un numéro pour copier « Image 7 ». Tapez un numéro dans le panneau pour y aller directement."
+  },
+  "tryTitle": {
+    "message": "Essayez sur celles-ci"
+  },
+  "tryOn": {
+    "message": "Numéroter ces images"
+  },
+  "tryJump": {
+    "message": "Aller à la n° 7"
+  },
+  "welcomeNote": {
+    "message": "La version gratuite numérote les 8 premières images de chaque page. Pro numérote tout et ajoute le rapport de réunion, les captures numérotées, les couleurs et les positions."
+  }
+}

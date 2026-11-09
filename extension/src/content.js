@@ -97,7 +97,7 @@
         pointer-events:auto;cursor:copy;user-select:none;transition:transform .12s ease;
         font-variant-numeric:tabular-nums;letter-spacing:-.01em}
       .b:hover{transform:scale(1.12)}
-      .b.copied::after{content:"Copied";position:absolute;top:calc(100% + 6px);left:50%;
+      .b.copied::after{content:var(--copied);position:absolute;top:calc(100% + 6px);left:50%;
         transform:translateX(-50%);font:600 11px/1 system-ui,sans-serif;background:#111418;color:#fff;
         padding:5px 7px;border-radius:6px;white-space:nowrap}
       .ring{position:fixed;border:3px solid var(--bg);border-radius:6px;pointer-events:none;
@@ -120,6 +120,7 @@
     host.style.setProperty('--fg', fg);
     host.style.setProperty('--h', `${h}px`);
     host.style.setProperty('--fs', `${Math.round(h * 0.55)}px`);
+    host.style.setProperty('--copied', JSON.stringify(chrome.i18n.getMessage('copied') || 'Copied'));
   }
 
   function badgeFor(img) {
@@ -130,7 +131,7 @@
       b.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        copyText(`Image ${numbers.get(img)}`);
+        copyText(chrome.i18n.getMessage('refImage', [String(numbers.get(img))]));
         b.classList.add('copied');
         setTimeout(() => b.classList.remove('copied'), 900);
       });
@@ -195,7 +196,7 @@
     }
     if (moreChip) {
       moreChip.style.display = hidden ? '' : 'none';
-      moreChip.innerHTML = `+${hidden} more images · <b>Unlock Pro</b>`;
+      moreChip.innerHTML = chrome.i18n.getMessage('moreImages_html', [String(hidden)]);
     }
     reportCount();
     return shown;
@@ -392,7 +393,7 @@
         if (!enabled) enable();
         else if (!numbers.has(lastContextImg)) scan();
         const n = numbers.get(lastContextImg);
-        if (n) copyText(`Image ${n}`);
+        if (n) copyText(chrome.i18n.getMessage('refImage', [String(n)]));
         reply({ ok: Boolean(n), n });
         break;
       }
