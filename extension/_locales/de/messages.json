@@ -363,5 +363,20 @@
   },
   "welcomeNote": {
     "message": "Free nummeriert die ersten 8 Bilder jeder Seite. Pro nummeriert alles und bietet Meeting-Bericht, nummerierte Screenshots, Farben und Positionen."
+  },
+  "autoAll": {
+    "message": "Bilder auf allen Websites nummerieren"
+  },
+  "numberStyle": {
+    "message": "Nummernstil"
+  },
+  "founderTitle": {
+    "message": "Nutzer der ersten Stunde"
+  },
+  "founderLine_html": {
+    "message": "Du hast Image Number Helper schon vor Pro genutzt – deshalb <b>bekommst du Pro gratis, für immer</b>. Danke!"
+  },
+  "founderBanner_html": {
+    "message": "<b>Willkommen bei Version 3.</b> Als früher Nutzer behältst du alles – und bekommst alle Pro-Funktionen gratis, für immer: unbegrenzte Nummern, Meeting-Bericht, nummerierte Screenshots, Bildsprung und mehr. Deine Einstellungen wurden übernommen."
   }
 }

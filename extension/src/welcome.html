@@ -27,18 +27,21 @@
     button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
     .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; display: block; }
+    .founder { margin: 28px 0 0; padding: 16px 18px; border-radius: 14px; background: linear-gradient(135deg, #fff4c2, #ffe3a3); color: #3b2500; font-size: 15px; }
     .note { color: var(--muted); font-size: 14px; margin-top: 24px; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="hero">
-      <img class="mark" src="../icons/icon128.png" alt="" />
+      <img class="mark" src="../icons/icon128.png" alt="" data-inh-skip />
       <div>
         <h1 data-i18n="welcomeH1"></h1>
         <p class="lede" data-i18n="welcomeLede"></p>
       </div>
     </div>
+
+    <div class="founder" id="founder" hidden data-i18n-html="founderBanner_html"></div>
 
     <div class="steps">
       <div class="step"><b>1</b><h3 data-i18n="step1T"></h3><p data-i18n-html="step1B_html"></p></div>

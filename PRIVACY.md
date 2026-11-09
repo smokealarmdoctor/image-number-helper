@@ -1,6 +1,6 @@
 # Privacy policy — Image Number Helper
 
-Last updated: November 9, 2026
+Last updated: November 10, 2026
 
 Image Number Helper is a Chrome extension that overlays numbered badges on images in the page you are viewing so you can refer to them in reviews, QA, and meetings.
 
@@ -34,7 +34,6 @@ The optional Pro unlock costs **$2.99 USD once** and is paid through Stripe’s 
 
 After payment, our license server creates a license key. The key contains the email you used at checkout so you can recover it later. We store the key with your payment record in Stripe and email it to you once (via our email provider, Resend). Afterwards the extension checks the key offline, and no data is sent when you use the extension. You can ask us to email your key again from the “Lost your key?” page.
 
-Purchases made before November 2026 used PayPal, and [PayPal’s privacy policy](https://www.paypal.com/us/legalhub/privacy-full) applies to those.
 
 ## Sharing
 

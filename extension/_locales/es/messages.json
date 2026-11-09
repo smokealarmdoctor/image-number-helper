@@ -363,5 +363,20 @@
   },
   "welcomeNote": {
     "message": "La versión gratuita numera las 8 primeras imágenes de cada página. Pro numera todo y añade el informe de reunión, capturas numeradas, colores y posiciones."
+  },
+  "autoAll": {
+    "message": "Numerar imágenes en todos los sitios"
+  },
+  "numberStyle": {
+    "message": "Estilo de número"
+  },
+  "founderTitle": {
+    "message": "Usuario fundador"
+  },
+  "founderLine_html": {
+    "message": "Usabas Image Number Helper antes de que existiera Pro, así que <b>Pro es tuyo gratis, para siempre</b>. ¡Gracias!"
+  },
+  "founderBanner_html": {
+    "message": "<b>Bienvenido a la versión 3.</b> Como usuario pionero lo conservas todo y además tienes todas las funciones Pro gratis para siempre: números ilimitados, informe de reunión, capturas numeradas, ir a imagen y más. Tu configuración se ha mantenido."
   }
 }

@@ -1,5 +1,6 @@
 import { LICENSE_ORIGIN, LICENSE_PUBLIC_JWK } from './config.js';
 import { normalizeKey, verifyLicense } from './license.js';
+import { mapLegacySettings, LEGACY_KEYS } from './migrate.js';
 
 // ---------- license ----------
 async function activate(rawKey) {
@@ -12,10 +13,31 @@ async function activate(rawKey) {
 }
 
 async function revalidate() {
-  const { license } = await chrome.storage.sync.get({ license: '' });
+  const { license, legacyPro } = await chrome.storage.sync.get({ license: '', legacyPro: false });
   const payload = license ? await verifyLicense(license, LICENSE_PUBLIC_JWK) : null;
-  await chrome.storage.local.set({ pro: payload ? { email: payload.email || '', iat: payload.iat || 0 } : null });
+  const pro = payload ? { email: payload.email || '', iat: payload.iat || 0 } : legacyPro ? { email: '', founder: true } : null;
+  await chrome.storage.local.set({ pro });
 }
+
+// Users of the free v1/v2.0 keep every feature: Pro for free, settings carried over.
+// v1 always wrote its settings (labelType, bgColor, …) to sync storage, so their
+// presence identifies an existing user. Runs on every worker start (not only
+// onInstalled, which isn't guaranteed to fire) and at most once per profile.
+let migration = null;
+function ensureMigrated() {
+  migration ??= (async () => {
+    const all = await chrome.storage.sync.get(null);
+    const legacy = all.legacyPro === undefined && LEGACY_KEYS.some((k) => k in all);
+    if (legacy) {
+      await chrome.storage.sync.set(mapLegacySettings(all));
+      await chrome.storage.sync.remove(LEGACY_KEYS);
+      chrome.tabs.create({ url: chrome.runtime.getURL('src/welcome.html?founder=1') });
+    }
+    await revalidate();
+  })();
+  return migration;
+}
+ensureMigrated();
 
 // ---------- toolbar badge ----------
 function setCount(tabId, count) {
@@ -40,7 +62,7 @@ function openUpgrade() {
 }
 
 // ---------- events ----------
-chrome.runtime.onInstalled.addListener(({ reason }) => {
+chrome.runtime.onInstalled.addListener(async ({ reason }) => {
   chrome.contextMenus.create({
     id: 'inh-copy-number',
     title: chrome.i18n.getMessage('menuCopyNumber'),
@@ -51,11 +73,12 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
     title: chrome.i18n.getMessage('menuToggle'),
     contexts: ['page'],
   });
-  if (reason === 'install') chrome.tabs.create({ url: chrome.runtime.getURL('src/welcome.html') });
-  revalidate();
+  await ensureMigrated();
+  const { legacyPro } = await chrome.storage.sync.get({ legacyPro: false });
+  if (reason === 'install' && !legacyPro) chrome.tabs.create({ url: chrome.runtime.getURL('src/welcome.html') });
 });
 
-chrome.runtime.onStartup.addListener(revalidate);
+chrome.runtime.onStartup.addListener(() => ensureMigrated());
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (!tab?.id) return;

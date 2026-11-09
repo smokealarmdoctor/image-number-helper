@@ -12,6 +12,8 @@
     size: 'm',
     minSize: 48,
     startAt: 1,
+    style: 'numbers',
+    autoAll: false,
     autoSites: [],
   };
   const PALETTES = {
@@ -43,12 +45,30 @@
   let mo = null;
   let lastContextImg = null;
 
+  // Number styles carried over from v1: 1 2 3 · A B C · 01 02 03 · I II III
+  function label(n) {
+    const style = settings.style;
+    if (style === 'letters') {
+      let s = '';
+      for (let x = n; x > 0; x = Math.floor((x - 1) / 26)) s = String.fromCharCode(65 + ((x - 1) % 26)) + s;
+      return s || '0';
+    }
+    if (style === 'padded') return String(n).padStart(2, '0');
+    if (style === 'roman' && n > 0 && n < 4000) {
+      const map = [[1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']];
+      let out = '';
+      for (const [v, r] of map) while (n >= v) (out += r), (n -= v);
+      return out;
+    }
+    return String(n);
+  }
+
   const eff = (k) => (!pro && PRO_KEYS.has(k) ? DEFAULTS[k] : settings[k]);
   const effColor = () => (pro || settings.color === 'red' || settings.color === 'blue' ? settings.color : 'red');
 
   // ---------- image discovery ----------
   function qualifies(img) {
-    if (!img.isConnected || host?.contains(img)) return false;
+    if (!img.isConnected || host?.contains(img) || img.closest('[data-inh-skip]')) return false;
     const r = img.getBoundingClientRect();
     const min = Number(settings.minSize) || 0;
     if (r.width < min || r.height < min) return false;
@@ -131,7 +151,7 @@
       b.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        copyText(chrome.i18n.getMessage('refImage', [String(numbers.get(img))]));
+        copyText(chrome.i18n.getMessage('refImage', [label(numbers.get(img))]));
         b.classList.add('copied');
         setTimeout(() => b.classList.remove('copied'), 900);
       });
@@ -181,7 +201,7 @@
         return;
       }
       const el = badgeFor(img);
-      const n = String(numbers.get(img));
+      const n = label(numbers.get(img));
       if (el.textContent !== n) el.textContent = n;
       el.style.display = '';
       place(el, r, Math.max(h, el.offsetWidth || h), h);
@@ -299,7 +319,7 @@
     const rows = ordered
       .filter((img) => img.isConnected)
       .map((img) => ({
-        n: numbers.get(img),
+        n: label(numbers.get(img)),
         alt: (img.alt || '').replace(/\s+/g, ' ').trim(),
         size: `${img.naturalWidth}×${img.naturalHeight}`,
         shown: `${Math.round(img.width)}×${Math.round(img.height)}`,
@@ -393,7 +413,7 @@
         if (!enabled) enable();
         else if (!numbers.has(lastContextImg)) scan();
         const n = numbers.get(lastContextImg);
-        if (n) copyText(chrome.i18n.getMessage('refImage', [String(n)]));
+        if (n) copyText(chrome.i18n.getMessage('refImage', [label(n)]));
         reply({ ok: Boolean(n), n });
         break;
       }
@@ -417,6 +437,7 @@
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === 'sync') {
       for (const [k, v] of Object.entries(changes)) if (k in DEFAULTS) settings[k] = v.newValue ?? DEFAULTS[k];
+      if (changes.autoAll?.newValue && !enabled && location.protocol !== 'chrome-extension:') enable();
       if (changes.minSize || changes.startAt) {
         if (enabled) renumber();
       } else refreshAll();
@@ -441,7 +462,8 @@
     ([s, l]) => {
       settings = { ...DEFAULTS, ...s };
       pro = Boolean(l.pro);
-      if ((settings.autoSites || []).includes(location.hostname)) enable();
+      const own = location.protocol === 'chrome-extension:';
+      if (!own && (settings.autoAll || (settings.autoSites || []).includes(location.hostname))) enable();
       offerLicense();
     }
   );

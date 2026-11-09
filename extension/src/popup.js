@@ -6,7 +6,7 @@ const asTab = params.get('tab') === '1';
 if (asTab) document.body.classList.add('tab');
 applyI18n();
 
-const DEFAULTS = { color: 'red', position: 'tl', size: 'm', minSize: 48, startAt: 1, autoSites: [], reportFormat: 'markdown' };
+const DEFAULTS = { color: 'red', position: 'tl', size: 'm', minSize: 48, startAt: 1, style: 'numbers', autoAll: false, autoSites: [], reportFormat: 'markdown' };
 let settings = { ...DEFAULTS };
 let pro = null;
 let tab = null;
@@ -113,6 +113,8 @@ function renderSettings() {
   $('#min-size').value = settings.minSize;
   $('#start-at').value = pro ? settings.startAt : 1;
   $('#report-format').value = settings.reportFormat;
+  $('#number-style').value = settings.style;
+  $('#auto-all').checked = Boolean(settings.autoAll);
 }
 
 async function refreshState() {
@@ -128,7 +130,9 @@ function renderUpgrade() {
   $('#buy-block').hidden = Boolean(pro);
   $('#key-block').hidden = Boolean(pro);
   $('#is-pro').hidden = !pro;
-  if (pro) $('#pro-line').innerHTML = tHtml('licensedTo_html', pro.email || t('thisBrowser'));
+  $('#founder-tag').hidden = !pro?.founder;
+  if (pro) $('#pro-line').innerHTML = pro.founder ? t('founderLine_html') : tHtml('licensedTo_html', pro.email || t('thisBrowser'));
+  $('#deactivate').hidden = Boolean(pro?.founder);
 }
 
 // ---------- events ----------
@@ -221,6 +225,14 @@ $('#start-at').addEventListener('change', (e) => {
   save({ startAt: Math.max(0, Number(e.target.value) || 0) }).then(() => setTimeout(refreshState, 250));
 });
 $('#report-format').addEventListener('change', (e) => save({ reportFormat: e.target.value }));
+$('#number-style').addEventListener('change', (e) => save({ style: e.target.value }));
+$('#auto-all').addEventListener('change', async (e) => {
+  await save({ autoAll: e.target.checked });
+  if (e.target.checked && pageState && !pageState.enabled) {
+    await send({ type: 'toggle', on: true });
+    refreshState();
+  }
+});
 
 for (const id of ['#plan-pill', '#foot-cta', '#meter-cta']) $(id).addEventListener('click', () => show('upgrade'));
 $('#back').addEventListener('click', () => (asTab ? window.close() : show('main')));

@@ -363,5 +363,20 @@
   },
   "welcomeNote": {
     "message": "Free numbers the first 8 images on any page. Pro numbers everything and adds the meeting report, numbered screenshots, colors and positions."
+  },
+  "autoAll": {
+    "message": "Number images on every site"
+  },
+  "numberStyle": {
+    "message": "Number style"
+  },
+  "founderTitle": {
+    "message": "Founding user"
+  },
+  "founderLine_html": {
+    "message": "You used Image Number Helper before Pro existed, so <b>Pro is yours free, forever</b>. Thank you!"
+  },
+  "founderBanner_html": {
+    "message": "<b>Welcome to version 3.</b> As an early user you keep everything — and get every Pro feature free, forever: unlimited numbers, the meeting report, numbered screenshots, jump-to-image and more. Your settings came with you."
   }
 }

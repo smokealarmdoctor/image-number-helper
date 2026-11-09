@@ -1,4 +1,5 @@
 applyI18n();
+if (new URLSearchParams(location.search).get('founder') === '1') document.getElementById('founder').hidden = false;
 const gallery = document.getElementById('gallery');
 const alts = ['Sunset over hills', 'Coffee mug, coral', 'Team portrait', 'Mountain lake', 'Mug, teal', 'City at night',
   'Rolling fields', 'Mug, plum', 'Founder headshot', 'Downtown skyline', 'Mug, indigo', 'Desert dunes'];

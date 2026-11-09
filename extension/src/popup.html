@@ -67,6 +67,10 @@
         <input type="checkbox" id="auto-site" />
         <span id="auto-label"></span>
       </label>
+      <label class="check">
+        <input type="checkbox" id="auto-all" />
+        <span data-i18n="autoAll"></span>
+      </label>
 
       <details class="appearance" id="appearance">
         <summary data-i18n="appearance"></summary>
@@ -92,6 +96,16 @@
             <button type="button" data-pos="bl" data-i18n-aria="posBL"></button>
             <button type="button" data-pos="br" data-i18n-aria="posBR"></button>
           </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="number-style" data-i18n="numberStyle"></label>
+          <select id="number-style">
+            <option value="numbers">1, 2, 3</option>
+            <option value="letters">A, B, C</option>
+            <option value="padded">01, 02, 03</option>
+            <option value="roman">I, II, III</option>
+          </select>
         </div>
 
         <div class="field">
@@ -166,6 +180,7 @@
     <section class="is-pro" id="is-pro" hidden>
       <div class="pro-badge">✓</div>
       <h1 data-i18n="youArePro"></h1>
+      <p class="founder" id="founder-tag" hidden data-i18n="founderTitle"></p>
       <p id="pro-line"></p>
       <button class="link danger" id="deactivate" type="button" data-i18n="removeLicense"></button>
     </section>
