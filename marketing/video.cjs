@@ -11,12 +11,12 @@ const OUT = path.join(__dirname, 'video');
 fs.mkdirSync(OUT, { recursive: true });
 const ICON = path.join(__dirname, '..', 'extension', 'icons', 'icon512.png');
 const FPS = 30;
-const DURATION = 34;
+const DURATION = 40;
 const W = 1280;
 const H = 720;
 const img = (n) => `file://${path.join(RAW, n)}`;
 
-const layers = ['page-off', 'page-pro', 'page-pro-grid', 'page-copied', 'page-jump', 'page-yellow-br', 'page-black-tl', 'page-purple-tr', 'page-blue-center', 'page-green-bl'];
+const layers = ['page-off', 'page-pro', 'page-pro-grid', 'page-copied', 'page-jump', 'page-yellow-br', 'page-black-tl', 'page-purple-tr', 'page-blue-center', 'page-green-bl', 'search-off', 'search-pro'];
 const md = fs.readFileSync(path.join(RAW, 'report.md'), 'utf8');
 const rows = md.split('\n').filter((l) => l.startsWith('| ') && !l.startsWith('| #')).map((l) => l.slice(2, -2).split(' | '));
 
@@ -35,12 +35,14 @@ body{width:${W}px;height:${H}px;overflow:hidden;font-family:Inter,system-ui,sans
 .stage{position:relative;height:600px}.stage img{position:absolute;inset:0;width:100%;opacity:0}
 #pop{width:300px;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(17,20,24,.3),0 0 0 1px rgba(17,20,24,.1);background:#fff}
 #pop img{display:block;width:100%}#pop img+img{position:absolute;top:0;left:0;opacity:0}
-#cap{left:50%;bottom:26px;transform:translateX(-50%);background:#111418;color:#fff;font-size:24px;font-weight:600;padding:14px 24px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#cap{z-index:10;left:50%;bottom:26px;transform:translateX(-50%);background:#111418;color:#fff;font-size:24px;font-weight:600;padding:14px 24px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 #cap b{color:#ffd60a}
 #keys{left:0;right:0;top:300px;display:flex;justify-content:center;gap:14px}
 #keys span{font:700 34px/1 "JetBrains Mono",monospace;background:#fff;border:2px solid #d0d4da;border-bottom-width:6px;border-radius:12px;padding:16px 22px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
 #cursor{width:34px;height:34px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));z-index:9}
 #ripple{width:60px;height:60px;border-radius:50%;border:3px solid #e5243b;z-index:8}
+.ring{border:4px solid #ffd60a;border-radius:10px;box-shadow:0 0 0 3px rgba(17,20,24,.85),0 0 24px rgba(255,214,10,.7);z-index:6}
+#quote{left:820px;top:96px;background:#111418;color:#fff;font-weight:700;font-size:26px;padding:13px 22px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,.3);z-index:7}#quote b{color:#ffd60a}
 #chip{background:#111418;color:#fff;font-weight:700;font-size:22px;padding:11px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25)}#chip b{color:#ffd60a}
 #doc{left:600px;top:60px;width:600px;background:#fff;border-radius:16px;box-shadow:0 30px 80px rgba(17,20,24,.22),0 0 0 1px rgba(17,20,24,.08);padding:24px 26px}
 #doc h3{font-size:20px}#doc .meta{color:#5d6673;font-size:13.5px;margin:3px 0 12px}
@@ -53,7 +55,7 @@ body{width:${W}px;height:${H}px;overflow:hidden;font-family:Inter,system-ui,sans
 #end .sub{font-size:17px;margin-top:16px}
 </style>
 <div id="title" class="abs"><img src="file://${ICON}"><h1>Image Number Helper</h1><p>Say “image 7” — not “the one on the left.”</p></div>
-<div id="win" class="abs"><div class="bar"><i></i><i></i><i></i><div class="url">lumenhome.shop/spring</div><div class="ext"><img src="file://${ICON}"></div></div>
+<div id="win" class="abs"><div class="bar"><i></i><i></i><i></i><div class="url" id="url">lumenhome.shop/spring</div><div class="ext"><img src="file://${ICON}"></div></div>
 <div class="stage">${layers.map((l) => `<img id="${l}" src="${img(l + '.png')}">`).join('')}</div></div>
 <div id="pop" class="abs"><img src="${img('popup-pro.png')}"><img id="pop2" src="${img('popup-jump.png')}"></div>
 <div id="doc" class="abs"><h3>Lumen Home — Spring Collection</h3><div class="meta">lumenhome.shop/spring · 13 images · <b style="color:#c2410c">2 missing alt text</b></div>
@@ -61,6 +63,8 @@ body{width:${W}px;height:${H}px;overflow:hidden;font-family:Inter,system-ui,sans
 <div id="keys" class="abs"><span>Alt</span><span>Shift</span><span>N</span></div>
 <div id="ripple" class="abs"></div>
 <div id="chip" class="abs">Copied: <b>Image 3</b></div>
+<div id="r9" class="abs ring" style="left:447px;top:392px;width:139px;height:118px"></div><div id="r16" class="abs ring" style="left:405px;top:556px;width:178px;height:72px"></div>
+<div id="quote" class="abs">“I like <b>9</b> and <b>16</b>.”</div>
 <svg id="cursor" class="abs" viewBox="0 0 24 24"><path d="M5 3l14 8-6 2-3 6z" fill="#111418" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
 <div id="cap" class="abs"></div>
 <div id="end" class="abs"><img src="file://${ICON}"><h1>Number every image. Free.</h1><p>First 8 images free on every page · Pro unlocks everything for <b>$2.99 once</b></p>
@@ -75,14 +79,18 @@ const lerp=(a,b,x)=>a+(b-a)*x;
 const fade=(t,a,b,fi=.35,fo=.35)=>Math.min(seg(t,a,a+fi),1-seg(t,b-fo,b));
 // keyframe path [[t,x,y],...]
 const path=(t,k)=>{if(t<=k[0][0])return k[0].slice(1);for(let i=1;i<k.length;i++){if(t<=k[i][0]){const x=io(seg(t,k[i-1][0],k[i][0]));return[lerp(k[i-1][1],k[i][1],x),lerp(k[i-1][2],k[i][2],x)]}}return k[k.length-1].slice(1)};
-const CAPS=[[3.3,7.9,'Open any page and press <b>Alt + Shift + N</b>'],[8.1,12.4,'Click a number to <b>copy</b> it'],[12.7,17.9,'Type a number to <b>jump</b> straight to it'],[18.1,23.4,'Copy a <b>meeting-ready report</b> (Pro)'],[23.6,28.4,'<b>6 colors, 5 positions</b>, any page (Pro)']];
+const CAPS=[[3.3,7.9,'Open any page and press <b>Alt + Shift + N</b>'],[8.1,12.4,'Click a number to <b>copy</b> it'],[12.7,17.9,'Type a number to <b>jump</b> straight to it'],[18.1,23.4,'Copy a <b>meeting-ready report</b> (Pro)'],[23.6,28.4,'<b>6 colors, 5 positions</b>, any page (Pro)'],[28.7,34.4,'Works on <b>image search</b>: compare results by number']];
 const LAYER=[['page-off',3,6.0],['page-pro',5.6,8.4],['page-pro-grid',8.0,10.05],['page-copied',10.0,12.9],['page-pro',12.5,15.6],['page-jump',15.2,18.4],['page-pro-grid',18.0,23.9],
- ['page-yellow-br',23.5,24.75],['page-black-tl',24.5,25.75],['page-purple-tr',25.5,26.75],['page-blue-center',26.5,27.75],['page-green-bl',27.5,28.9]];
+ ['page-yellow-br',23.5,24.75],['page-black-tl',24.5,25.75],['page-purple-tr',25.5,26.75],['page-blue-center',26.5,27.75],['page-green-bl',27.5,29.0],['search-off',28.6,31.0],['search-pro',30.6,34.9]];
 window.render=t=>{
   $('title').style.opacity=fade(t,.15,3.1,.6,.5);
   $('title').style.transform='translateY('+(1-io(seg(t,.15,.9)))*20+'px) scale('+lerp(.96,1,io(seg(t,.15,.9)))+')';
   // window
-  const winIn=fade(t,3.0,28.9,.5,.5);
+  const winIn=fade(t,3.0,34.9,.5,.5);
+  $('url').textContent=t>=28.8?'Image search · handmade ceramic mugs':'lumenhome.shop/spring';
+  $('search-pro').style.transform='scale('+lerp(1.015,1,back(seg(t,30.6,31.1)))+')';
+  for(const [id,a] of [['r9',32.2],['r16',32.5]]){const r=$(id);r.style.opacity=fade(t,a,34.5,.2,.4);r.style.transform='scale('+lerp(1.15,1,io(seg(t,a,a+.3)))+')'}
+  const qt=$('quote');qt.style.opacity=fade(t,31.8,34.4,.25,.4);qt.style.transform='scale('+back(seg(t,31.8,32.2))+')';
   const wx=lerp(lerp(160,30,io(seg(t,12.5,13.1))),160,io(seg(t,23.3,23.9)));
   const win=$('win');win.style.opacity=winIn;win.style.left=wx+'px';win.style.top=(40+(1-io(seg(t,3,3.5)))*30)+'px';
   const op={};for(const [id,a,b] of LAYER){const v=fade(t,a,b,.3,.3);op[id]=Math.max(op[id]||0,v)}
@@ -114,8 +122,8 @@ window.render=t=>{
   const cap=$('cap');const cur2=CAPS.find(([a,b])=>t>=a&&t<b);
   if(cur2){cap.innerHTML=cur2[2];cap.style.opacity=fade(t,cur2[0],cur2[1],.3,.3)}else cap.style.opacity=0;
   // end
-  const e=$('end');const ei=seg(t,29.0,29.7);e.style.opacity=ei;e.style.transform='translateY('+(1-io(ei))*20+'px)';
-  e.querySelector('.cta').style.transform='scale('+(1+Math.sin(Math.max(0,t-30.5)*4)*.025*seg(t,30.5,31))+')';
+  const e=$('end');const ei=seg(t,35.0,35.7);e.style.opacity=ei;e.style.transform='translateY('+(1-io(ei))*20+'px)';
+  e.querySelector('.cta').style.transform='scale('+(1+Math.sin(Math.max(0,t-36.5)*4)*.025*seg(t,36.5,37))+')';
 };
 render(0);
 </script>`;

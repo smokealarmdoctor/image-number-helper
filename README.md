@@ -4,7 +4,7 @@ Chrome extension that numbers images on a webpage so reviews, QA, and meetings c
 
 ![Say “image 7”, not “the one on the left”](marketing/store/01-say-image-7.png)
 
-▶️ **[Watch the 34-second demo](marketing/video/image-number-helper-demo.mp4)**
+▶️ **[Watch the 40-second demo](marketing/video/image-number-helper-demo.mp4)**
 
 ## Features
 
