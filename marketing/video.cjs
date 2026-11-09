@@ -11,7 +11,24 @@ const OUT = path.join(__dirname, 'video');
 fs.mkdirSync(OUT, { recursive: true });
 const ICON = path.join(__dirname, '..', 'extension', 'icons', 'icon512.png');
 const FPS = 30;
-const DURATION = 40;
+const DURATION = 46;
+// Narration-driven timeline: scenes were designed on an "original" clock;
+// WARP stretches each scene so its voiceover line fits. [origStart, newStart]
+const WARP = [[0, 0], [3.0, 3.0], [8.0, 9.6], [12.5, 14.2], [18.0, 19.8], [23.5, 26.2], [28.5, 31.2], [34.9, 37.8]];
+function origTime(t) {
+  for (let i = WARP.length - 1; i >= 0; i--) {
+    const [o, n] = WARP[i];
+    if (t >= n) {
+      if (i === WARP.length - 1) return Math.min(40, o + (t - n)); // end card: play then hold
+      const [o2, n2] = WARP[i + 1];
+      return o + ((t - n) * (o2 - o)) / (n2 - n);
+    }
+  }
+  return 0;
+}
+// Voiceover lines (marketing/audio/vo/lineN.mp3) and when they start on the new clock.
+const VO_STARTS = [0.5, 3.4, 9.9, 14.6, 20.1, 26.6, 31.5, 38.2];
+const MUSIC = path.join(__dirname, 'audio', 'music.mp3');
 const W = 1280;
 const H = 720;
 const img = (n) => `file://${path.join(RAW, n)}`;
@@ -89,8 +106,8 @@ window.render=t=>{
   const winIn=fade(t,3.0,34.9,.5,.5);
   $('url').textContent=t>=28.8?'Image search · handmade ceramic mugs':'lumenhome.shop/spring';
   $('search-pro').style.transform='scale('+lerp(1.015,1,back(seg(t,30.6,31.1)))+')';
-  for(const [id,a] of [['r9',32.2],['r16',32.5]]){const r=$(id);r.style.opacity=fade(t,a,34.5,.2,.4);r.style.transform='scale('+lerp(1.15,1,io(seg(t,a,a+.3)))+')'}
-  const qt=$('quote');qt.style.opacity=fade(t,31.8,34.4,.25,.4);qt.style.transform='scale('+back(seg(t,31.8,32.2))+')';
+  for(const [id,a] of [['r9',31.8],['r16',32.1]]){const r=$(id);r.style.opacity=fade(t,a,34.5,.2,.4);r.style.transform='scale('+lerp(1.15,1,io(seg(t,a,a+.3)))+')'}
+  const qt=$('quote');qt.style.opacity=fade(t,31.4,34.4,.25,.4);qt.style.transform='scale('+back(seg(t,31.4,31.8))+')';
   const wx=lerp(lerp(160,30,io(seg(t,12.5,13.1))),160,io(seg(t,23.3,23.9)));
   const win=$('win');win.style.opacity=winIn;win.style.left=wx+'px';win.style.top=(40+(1-io(seg(t,3,3.5)))*30)+'px';
   const op={};for(const [id,a,b] of LAYER){const v=fade(t,a,b,.3,.3);op[id]=Math.max(op[id]||0,v)}
@@ -142,7 +159,7 @@ render(0);
   const total = DURATION * FPS;
   for (let f = 0; f < total; f++) {
     const t = f / FPS;
-    await page.evaluate((t) => window.render(t), t);
+    await page.evaluate((t) => window.render(t), origTime(t));
     const buf = await page.screenshot({ type: 'png' });
     if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once('drain', r));
     if (Math.abs(t - 6.5) < 1e-6) fs.writeFileSync(path.join(OUT, 'poster.png'), buf);
@@ -151,5 +168,27 @@ render(0);
   ff.stdin.end();
   await new Promise((r) => ff.on('close', r));
   await browser.close();
+  // ---- audio: voiceover lines + music ducked under the voice ----
+  const vo = VO_STARTS.map((_, i) => path.join(__dirname, 'audio', 'vo', `line${i + 1}.mp3`));
+  if (vo.every((f) => fs.existsSync(f))) {
+    const silent = out.replace('.mp4', '.silent.mp4');
+    fs.renameSync(out, silent);
+    const hasMusic = fs.existsSync(MUSIC);
+    const inputs = ['-i', silent, ...vo.flatMap((f) => ['-i', f]), ...(hasMusic ? ['-i', MUSIC] : [])];
+    const n = vo.length;
+    const delays = vo.map((_, i) => `[${i + 1}:a]aresample=48000,aformat=channel_layouts=stereo,adelay=${Math.round(VO_STARTS[i] * 1000)}:all=1[v${i}]`);
+    let graph = `${delays.join(';')};${vo.map((_, i) => `[v${i}]`).join('')}amix=inputs=${n}:normalize=0,volume=1.6,apad=whole_dur=${DURATION}[voice]`;
+    if (hasMusic) {
+      graph += `;[voice]asplit=2[vmix][vkey];[${n + 1}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:${DURATION},volume=0.26,afade=t=in:d=0.8,afade=t=out:st=${DURATION - 2.5}:d=2.5[mus];` +
+        `[mus][vkey]sidechaincompress=threshold=0.02:ratio=10:attack=30:release=500[duck];[duck][vmix]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000[aout]`;
+    } else graph += `;[voice]anull[aout]`;
+    await new Promise((resolve, reject) => {
+      const p = spawn('ffmpeg', ['-y', '-loglevel', 'error', ...inputs, '-filter_complex', graph, '-map', '0:v', '-map', '[aout]',
+        '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', String(DURATION), '-movflags', '+faststart', out], { stdio: 'inherit' });
+      p.on('close', (c) => (c === 0 ? resolve() : reject(new Error('ffmpeg mix failed'))));
+    });
+    fs.unlinkSync(silent);
+    console.log(`\n♪ mixed voiceover${hasMusic ? ' + music' : ''}`);
+  }
   console.log(`\n✓ ${out}`);
 })();
