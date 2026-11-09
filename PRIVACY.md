@@ -1,6 +1,6 @@
 # Privacy policy — Image Number Helper
 
-Last updated: September 16, 2026
+Last updated: November 9, 2026
 
 Image Number Helper is a Chrome extension that overlays numbered badges on images in the page you are viewing so you can refer to them in reviews, QA, and meetings.
 
@@ -10,25 +10,31 @@ This policy is the public URL for the Chrome Web Store listing.
 
 We do not create accounts, run analytics, or send page contents to a server.
 
-Settings (on/off, label style, colors, license tier) are stored in Chrome’s sync storage on your Google account so they follow you between browsers. That storage never leaves your Google account except as Chrome already syncs it.
+Settings (label style, colors, the sites you choose to auto-number, and your license key) are stored in Chrome’s sync storage on your Google account so they follow you between browsers. That storage never leaves your Google account except as Chrome already syncs it.
 
-A “copy report” action (Pro) writes image alt text, dimensions, and a label onto your clipboard. That text never leaves your device unless you paste it somewhere.
+The “copy report” and “screenshot” actions (Pro) write image alt text, dimensions, file names, or a picture of the visible page to your clipboard and, for screenshots, your downloads folder. That data never leaves your device unless you paste or share it somewhere.
 
 We do not collect:
 - browsing history
 - passwords or form data
-- names, emails, or accounts (except what PayPal collects if you buy Pro)
+- names or accounts (beyond the purchase email described below)
 - analytics or advertising identifiers
 
 ## Permissions
 
-- **storage** — save preferences and the Pro unlock flag in Chrome sync storage.
-- **activeTab** — talk to the tab you have open when the popup asks for a count or a copyable report.
-- **Host access (http/https)** — read `<img>` elements on the current page so badges can be positioned. The extension does not inject ads, read forms, or collect browsing history.
+- **storage**: save preferences and your license key in Chrome sync storage.
+- **activeTab**: talk to the tab you have open when you use the popup, and capture a numbered screenshot when you ask for one.
+- **contextMenus**: add “Copy image number” and “Show / hide image numbers” to the right-click menu.
+- **scripting**: add the numbering script to tabs that were already open before the extension was installed or updated.
+- **Host access (http/https)**: read the position of `<img>` elements on the current page so badges can be drawn over them. The extension does not inject ads, read forms, or collect browsing history. On our license page only, it reads the license key shown to you so Pro unlocks without copy and paste.
 
 ## Payments
 
-The optional Pro unlock costs **$4.99 USD once**, paid through PayPal. PayPal processes the payment on their hosted checkout. [PayPal’s privacy policy](https://www.paypal.com/us/legalhub/privacy-full) applies to that purchase. We never see card numbers or PayPal passwords. After payment you receive a license key to paste in the extension. The key is stored only in Chrome sync storage on your devices.
+The optional Pro unlock costs **$4.99 USD once** and is paid through Stripe’s hosted checkout. [Stripe’s privacy policy](https://stripe.com/privacy) applies to that purchase. We never see card numbers.
+
+After payment, our license server creates a license key. The key contains the email you used at checkout so you can recover it later. We store the key with your payment record in Stripe and email it to you once (via our email provider, Resend). Afterwards the extension checks the key offline, and no data is sent when you use the extension. You can ask us to email your key again from the “Lost your key?” page.
+
+Purchases made before November 2026 used PayPal, and [PayPal’s privacy policy](https://www.paypal.com/us/legalhub/privacy-full) applies to those.
 
 ## Sharing
 

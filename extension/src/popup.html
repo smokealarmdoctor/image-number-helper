@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Number Helper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- ============ MAIN ============ -->
+  <main id="view-main" class="view">
+    <header class="top">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">7</span>
+        <div>
+          <div class="name">Image Numbers</div>
+          <button class="plan" id="plan-pill" type="button">Free</button>
+        </div>
+      </div>
+      <label class="switch" title="Show / hide numbers (Alt+Shift+N)">
+        <input type="checkbox" id="toggle" />
+        <span class="track"><span class="thumb"></span></span>
+        <span class="sr">Show numbers</span>
+      </label>
+    </header>
+
+    <section class="status" id="status">
+      <div class="count"><span id="count">0</span><small id="count-label">images numbered</small></div>
+      <div class="host" id="host"></div>
+      <div class="meter" id="meter" hidden>
+        <div class="bar"><span id="meter-fill"></span></div>
+        <button class="link" id="meter-cta" type="button"></button>
+      </div>
+    </section>
+
+    <section class="unsupported" id="unsupported" hidden>
+      <strong>Open a regular web page</strong>
+      <p>Chrome doesn’t let extensions draw on browser pages or the Web Store. Try any http or https site.</p>
+    </section>
+
+    <div id="controls">
+      <form class="jump" id="jump">
+        <label for="jump-n">Go to image</label>
+        <div class="jump-row">
+          <span class="hash">#</span>
+          <input id="jump-n" type="number" min="1" inputmode="numeric" placeholder="7" />
+          <button type="submit" class="btn">Show</button>
+        </div>
+      </form>
+
+      <div class="actions">
+        <button class="action" id="copy-report" type="button" data-pro>
+          <svg viewBox="0 0 24 24"><path d="M8 4h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm1 4h6m-6 4h6m-6 4h4"/></svg>
+          <span>Copy report</span><i class="lock" aria-label="Pro"></i>
+        </button>
+        <button class="action" id="screenshot" type="button" data-pro>
+          <svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h2l1.5-2h5L16 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><circle cx="12" cy="12.5" r="3.5"/></svg>
+          <span>Screenshot</span><i class="lock" aria-label="Pro"></i>
+        </button>
+        <button class="action" id="renumber" type="button">
+          <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+          <span>Renumber</span>
+        </button>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="auto-site" />
+        <span>Always number images on <b id="auto-host">this site</b></span>
+      </label>
+
+      <details class="appearance" id="appearance">
+        <summary>Appearance &amp; options</summary>
+
+        <div class="field">
+          <span class="label">Color</span>
+          <div class="swatches" id="swatches">
+            <button type="button" data-color="red" style="--c:#e5243b" aria-label="Red"></button>
+            <button type="button" data-color="blue" style="--c:#1f6feb" aria-label="Blue"></button>
+            <button type="button" data-color="black" style="--c:#111418" aria-label="Black" data-pro></button>
+            <button type="button" data-color="yellow" style="--c:#ffd60a" aria-label="Yellow" data-pro></button>
+            <button type="button" data-color="green" style="--c:#12b76a" aria-label="Green" data-pro></button>
+            <button type="button" data-color="purple" style="--c:#7a5af8" aria-label="Purple" data-pro></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">Position <i class="lock" data-pro-hint></i></span>
+          <div class="positions" id="positions">
+            <button type="button" data-pos="tl" aria-label="Top left"></button>
+            <button type="button" data-pos="tr" aria-label="Top right"></button>
+            <button type="button" data-pos="center" aria-label="Center"></button>
+            <button type="button" data-pos="bl" aria-label="Bottom left"></button>
+            <button type="button" data-pos="br" aria-label="Bottom right"></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">Size</span>
+          <div class="seg" id="sizes">
+            <button type="button" data-size="s">S</button>
+            <button type="button" data-size="m">M</button>
+            <button type="button" data-size="l">L</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="min-size">Skip images smaller than</label>
+          <div class="unit"><input id="min-size" type="number" min="0" max="400" step="4" /><span>px</span></div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="start-at">Start numbering at <i class="lock" data-pro-hint></i></label>
+          <div class="unit"><input id="start-at" type="number" min="0" max="9999" /></div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="report-format">Report format</label>
+          <select id="report-format">
+            <option value="markdown">Markdown table</option>
+            <option value="text">Plain text</option>
+            <option value="csv">CSV (spreadsheet)</option>
+          </select>
+        </div>
+      </details>
+    </div>
+
+    <footer class="foot">
+      <span>Shortcut <kbd>Alt</kbd><kbd>Shift</kbd><kbd>N</kbd></span>
+      <button class="link" id="foot-cta" type="button">Upgrade</button>
+    </footer>
+  </main>
+
+  <!-- ============ UPGRADE ============ -->
+  <main id="view-upgrade" class="view" hidden>
+    <header class="top">
+      <button class="back" id="back" type="button" aria-label="Back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="name">Image Numbers <span class="pro-tag">Pro</span></div>
+      <span></span>
+    </header>
+
+    <section id="buy-block">
+      <h1>Number every image.<br />Pay once, keep it forever.</h1>
+      <ul class="perks">
+        <li><b>Unlimited numbers</b> — not just the first 8</li>
+        <li><b>Meeting report</b> — alt text, sizes &amp; files as Markdown, text or CSV</li>
+        <li><b>Numbered screenshots</b> — one click, ready for Slack or Jira</li>
+        <li><b>6 colors, 5 positions</b>, custom start number</li>
+        <li><b>Every future Pro feature</b>, on all your Chrome profiles</li>
+      </ul>
+      <a class="btn primary big" id="buy" href="#" target="_blank" rel="noopener">
+        Get Pro — <span id="price">$4.99</span> once
+      </a>
+      <p class="fine">Secure checkout by Stripe · Cards, Apple Pay, Google Pay · 30-day refund</p>
+    </section>
+
+    <section class="key-block" id="key-block">
+      <label for="license-key">Already bought? Paste your license key</label>
+      <textarea id="license-key" rows="3" spellcheck="false" placeholder="INH1.…"></textarea>
+      <div class="row">
+        <button class="btn" id="activate" type="button">Activate</button>
+        <a class="link" id="recover" href="#" target="_blank" rel="noopener">Lost your key?</a>
+      </div>
+      <p class="msg" id="key-msg" role="status"></p>
+    </section>
+
+    <section class="is-pro" id="is-pro" hidden>
+      <div class="pro-badge">✓</div>
+      <h1>You’re Pro</h1>
+      <p>Licensed to <b id="pro-email">you</b>. Thanks for supporting an indie tool!</p>
+      <button class="link danger" id="deactivate" type="button">Remove license from this browser</button>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
