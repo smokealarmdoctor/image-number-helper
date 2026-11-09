@@ -2,8 +2,48 @@
 
 Chrome extension that numbers images on a webpage so reviews, QA, and meetings can say “image 7” instead of “the one on the left.”
 
-- **Free:** first 8 images on a page
-- **Pro:** $4.99 USD lifetime (PayPal) — unlimited labels, colors, positions, meeting report
+![Say “image 7”, not “the one on the left”](marketing/store/01-say-image-7.png)
+
+▶️ **[Watch the 46-second, narrated demo](marketing/video/image-number-helper-demo.mp4)**
+
+## Features
+
+**Free**
+- Numbers the first 8 images on any page. Press `Alt+Shift+N` or use the popup switch.
+- Click a badge to copy “Image 7”, or right-click any image → *Copy image number*.
+- **Go to image #**: scrolls to the image and spotlights it.
+- Stable numbering while lazy images load. **Renumber** resets the order.
+- Skips icons and tracking pixels (adjustable minimum size), with an “Always number on this site” option.
+
+**Pro: $2.99 once** (secure checkout by Stripe)
+- Unlimited numbers.
+- **Meeting report**: alt text, natural/displayed size and file for every number, as Markdown, plain text or CSV. Missing alt text is flagged.
+- **Numbered screenshots**, copied to the clipboard and saved.
+- 6 colors, 5 positions and a custom start number.
+
+## Repository layout
+
+| Path | What |
+|---|---|
+| `extension/` | Manifest V3 extension (load unpacked from here) |
+| `license-server/` | Cloudflare Worker that issues Pro keys from Stripe payments |
+| `scripts/` | `keys`, `stripe:setup`, `issue-key`, `package` |
+| `test/` | `npm test`: license crypto, webhook signatures, Worker routes |
+| `marketing/` | Demo sites (storefront + image search results mockup), capture/compose/video scripts, store graphics, mockups and video |
+| `docs/STRATEGY.md` | Review, UX, revenue and growth plan |
+| `docs/STRIPE-SETUP.md` | Stripe + Worker setup and go-live checklist |
+
+## Development
+
+```bash
+npm test                      # unit + Worker tests (Node 20+)
+# chrome://extensions → Developer mode → Load unpacked → extension/
+node marketing/capture.cjs    # real screenshots of the extension (Playwright)
+node marketing/compose.cjs    # Chrome Web Store graphics → marketing/store/ (the store takes 5: use 01, 07, 02, 03, 06)
+node scripts/make-icon.cjs    # extension icons from SVG
+node marketing/video.cjs      # demo video → marketing/video/ (needs ffmpeg)
+npm run package               # dist/*.zip for the Web Store
+```
 
 ## Privacy policy
 

@@ -1,0 +1,21 @@
+# Render Blueprint for the license server (see docs/STRIPE-SETUP.md).
+services:
+  - type: web
+    name: image-number-helper-license
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: node --version
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: LICENSE_SEED      # random secret generated and kept by Render
+        generateValue: true
+      - key: STRIPE_SECRET_KEY # restricted live key: Checkout Sessions read, PaymentIntents write
+        sync: false
+      - key: APP_ID
+        value: image-number-helper
+      - key: SUPPORT_URL
+        value: https://github.com/smokealarmdoctor/image-number-helper/issues

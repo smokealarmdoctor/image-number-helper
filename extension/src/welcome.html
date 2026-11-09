@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="welcomeTitle">Welcome to Image Number Helper</title>
+  <style>
+    :root { --bg:#f7f8fa; --card:#fff; --text:#111418; --muted:#5d6673; --line:#e4e7ec; --accent:#e5243b; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#111418; --card:#1a1e24; --text:#eef1f5; --muted:#9aa4b2; --line:#2d333c; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 48px 24px 80px; }
+    .hero { display: flex; align-items: center; gap: 18px; }
+    .mark { width: 72px; height: 72px; flex: none; }
+    h1 { font-size: clamp(26px, 4vw, 38px); line-height: 1.1; margin: 0; letter-spacing: -.02em; }
+    .lede { color: var(--muted); margin: 6px 0 0; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 32px 0; }
+    .step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .step b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 14px; margin-bottom: 8px; }
+    .step h3 { margin: 0 0 4px; font-size: 16px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+    kbd { font: 600 13px/1 ui-monospace, monospace; border: 1px solid var(--line); border-bottom-width: 3px; border-radius: 5px; padding: 3px 6px; background: var(--card); }
+    .try { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; margin: 8px 0 16px; }
+    .try h2 { margin: 0; font-size: 20px; }
+    .btns { display: flex; gap: 8px; }
+    button { font-family: inherit; font-weight: 600; font-size: 15px; line-height: 1; border-radius: 10px; padding: 11px 16px; cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+    button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; display: block; }
+    .founder { margin: 28px 0 0; padding: 16px 18px; border-radius: 14px; background: linear-gradient(135deg, #fff4c2, #ffe3a3); color: #3b2500; font-size: 15px; }
+    .note { color: var(--muted); font-size: 14px; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <img class="mark" src="../icons/icon128.png" alt="" data-inh-skip />
+      <div>
+        <h1 data-i18n="welcomeH1"></h1>
+        <p class="lede" data-i18n="welcomeLede"></p>
+      </div>
+    </div>
+
+    <div class="founder" id="founder" hidden data-i18n-html="founderBanner_html"></div>
+
+    <div class="steps">
+      <div class="step"><b>1</b><h3 data-i18n="step1T"></h3><p data-i18n-html="step1B_html"></p></div>
+      <div class="step"><b>2</b><h3 data-i18n="step2T"></h3><p data-i18n-html="step2B_html"></p></div>
+      <div class="step"><b>3</b><h3 data-i18n="step3T"></h3><p data-i18n="step3B"></p></div>
+    </div>
+
+    <div class="try">
+      <h2 data-i18n="tryTitle"></h2>
+      <div class="btns">
+        <button class="primary" id="on" data-i18n="tryOn"></button>
+        <button id="jump" data-i18n="tryJump"></button>
+      </div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+    <p class="note" data-i18n="welcomeNote"></p>
+  </div>
+  <script src="i18n.js"></script>
+  <script src="content.js"></script>
+  <script src="welcome.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+{
+  "extName": {
+    "message": "Image Number Helper"
+  },
+  "extShortName": {
+    "message": "Image Numbers"
+  },
+  "extDesc": {
+    "message": "Number every image on a page so reviews, QA and meetings can say “image 7” instead of “the one on the left.”"
+  },
+  "cmdToggle": {
+    "message": "Show / hide image numbers on this page"
+  },
+  "actionTitle": {
+    "message": "Image Number Helper (Alt+Shift+N)"
+  },
+  "menuCopyNumber": {
+    "message": "Copy image number"
+  },
+  "menuToggle": {
+    "message": "Show / hide image numbers"
+  },
+  "refImage": {
+    "message": "Image $N$",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "copied": {
+    "message": "Copied"
+  },
+  "moreImages_html": {
+    "message": "+$COUNT$ more images · <b>Unlock Pro</b>",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errInvalidKey": {
+    "message": "That key isn’t valid. Copy the whole key from your receipt page or email."
+  },
+  "planFree": {
+    "message": "Free"
+  },
+  "planPro": {
+    "message": "Pro"
+  },
+  "toggleTitle": {
+    "message": "Show / hide numbers (Alt+Shift+N)"
+  },
+  "showNumbers": {
+    "message": "Show numbers"
+  },
+  "imagesNumberedOne": {
+    "message": "image numbered"
+  },
+  "imagesNumberedMany": {
+    "message": "images numbered"
+  },
+  "numbersOff": {
+    "message": "numbers are off"
+  },
+  "onHost": {
+    "message": "on $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "offHint": {
+    "message": "$COUNT$ images on $HOST$ · press the switch",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
+  "meterCta": {
+    "message": "Showing $SHOWN$ of $TOTAL$ — number all $TOTAL$ with Pro →",
+    "placeholders": {
+      "shown": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsupportedTitle": {
+    "message": "Open a regular web page"
+  },
+  "unsupportedBody": {
+    "message": "Chrome doesn’t let extensions draw on browser pages or the Web Store. Try any http or https site."
+  },
+  "goToImage": {
+    "message": "Go to image"
+  },
+  "show": {
+    "message": "Show"
+  },
+  "copyReport": {
+    "message": "Copy report"
+  },
+  "screenshot": {
+    "message": "Screenshot"
+  },
+  "renumber": {
+    "message": "Renumber"
+  },
+  "alwaysOn_html": {
+    "message": "Always number images on <b>$HOST$</b>",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "appearance": {
+    "message": "Appearance & options"
+  },
+  "color": {
+    "message": "Color"
+  },
+  "position": {
+    "message": "Position"
+  },
+  "size": {
+    "message": "Size"
+  },
+  "skipSmaller": {
+    "message": "Skip images smaller than"
+  },
+  "startAt": {
+    "message": "Start numbering at"
+  },
+  "reportFormat": {
+    "message": "Report format"
+  },
+  "fmtMarkdown": {
+    "message": "Markdown table"
+  },
+  "fmtText": {
+    "message": "Plain text"
+  },
+  "fmtCsv": {
+    "message": "CSV (spreadsheet)"
+  },
+  "colorRed": {
+    "message": "Red"
+  },
+  "colorBlue": {
+    "message": "Blue"
+  },
+  "colorBlack": {
+    "message": "Black"
+  },
+  "colorYellow": {
+    "message": "Yellow"
+  },
+  "colorGreen": {
+    "message": "Green"
+  },
+  "colorPurple": {
+    "message": "Purple"
+  },
+  "posTL": {
+    "message": "Top left"
+  },
+  "posTR": {
+    "message": "Top right"
+  },
+  "posC": {
+    "message": "Center"
+  },
+  "posBL": {
+    "message": "Bottom left"
+  },
+  "posBR": {
+    "message": "Bottom right"
+  },
+  "shortcut": {
+    "message": "Shortcut"
+  },
+  "upgradeCta": {
+    "message": "Upgrade · $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "proCheck": {
+    "message": "Pro ✓"
+  },
+  "back": {
+    "message": "Back"
+  },
+  "buyHeadline_html": {
+    "message": "Number every image.<br>Pay once, keep it forever."
+  },
+  "featureLocked_html": {
+    "message": "$FEATURE$ is a Pro feature.<br>Pay once, keep it forever.",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "featReport": {
+    "message": "The meeting report"
+  },
+  "featScreens": {
+    "message": "Numbered screenshots"
+  },
+  "featColors": {
+    "message": "Extra colors"
+  },
+  "featPosition": {
+    "message": "Badge position"
+  },
+  "featStart": {
+    "message": "Custom start number"
+  },
+  "perk1_html": {
+    "message": "<b>Unlimited numbers</b> — not just the first 8"
+  },
+  "perk2_html": {
+    "message": "<b>Meeting report</b> — alt text, sizes &amp; files as Markdown, text or CSV"
+  },
+  "perk3_html": {
+    "message": "<b>Numbered screenshots</b> — one click, ready for Slack or Jira"
+  },
+  "perk4_html": {
+    "message": "<b>6 colors, 5 positions</b>, custom start number"
+  },
+  "perk5_html": {
+    "message": "<b>Every future Pro feature</b>, on all your Chrome profiles"
+  },
+  "getPro": {
+    "message": "Get Pro — $PRICE$ once",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "fine": {
+    "message": "Secure checkout by Stripe · Cards, Apple Pay, Google Pay · 30-day refund"
+  },
+  "haveKey": {
+    "message": "Already bought? Paste your license key"
+  },
+  "activate": {
+    "message": "Activate"
+  },
+  "lostKey": {
+    "message": "Lost your key?"
+  },
+  "checking": {
+    "message": "Checking…"
+  },
+  "unlocked": {
+    "message": "Pro unlocked. Enjoy!"
+  },
+  "somethingWrong": {
+    "message": "Something went wrong."
+  },
+  "youArePro": {
+    "message": "You’re Pro"
+  },
+  "licensedTo_html": {
+    "message": "Licensed to <b>$EMAIL$</b>. Thanks for supporting an indie tool!",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "thisBrowser": {
+    "message": "this browser"
+  },
+  "removeLicense": {
+    "message": "Remove license from this browser"
+  },
+  "noImage": {
+    "message": "No image #$N$ on this page",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "reportCopied": {
+    "message": "Report for $COUNT$ images copied",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "clipboardFail": {
+    "message": "Couldn’t reach the clipboard"
+  },
+  "turnOnFirst": {
+    "message": "Turn numbers on first"
+  },
+  "shotSaved": {
+    "message": "Screenshot copied & saved"
+  },
+  "shotBlocked": {
+    "message": "Chrome blocked the capture on this page"
+  },
+  "renumbered": {
+    "message": "Renumbered $COUNT$ images top to bottom",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeTitle": {
+    "message": "Welcome to Image Number Helper"
+  },
+  "welcomeH1": {
+    "message": "You’re set. Say “image 7” and everyone knows which one."
+  },
+  "welcomeLede": {
+    "message": "Image Number Helper puts a number on every image so feedback, QA and meetings stop pointing at “the one on the left.”"
+  },
+  "step1T": {
+    "message": "Pin it"
+  },
+  "step1B_html": {
+    "message": "Click the puzzle icon in Chrome’s toolbar and pin <strong>Image Number Helper</strong>."
+  },
+  "step2T": {
+    "message": "Number a page"
+  },
+  "step2B_html": {
+    "message": "Press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>N</kbd> or flip the switch in the popup."
+  },
+  "step3T": {
+    "message": "Click to copy"
+  },
+  "step3B": {
+    "message": "Click any badge to copy “Image 7”. Type a number in the popup to jump straight to it."
+  },
+  "tryTitle": {
+    "message": "Try it on these"
+  },
+  "tryOn": {
+    "message": "Number these images"
+  },
+  "tryJump": {
+    "message": "Jump to #7"
+  },
+  "welcomeNote": {
+    "message": "Free numbers the first 8 images on any page. Pro numbers everything and adds the meeting report, numbered screenshots, colors and positions."
+  },
+  "autoAll": {
+    "message": "Number images on every site"
+  },
+  "numberStyle": {
+    "message": "Number style"
+  },
+  "founderTitle": {
+    "message": "Founding user"
+  },
+  "founderLine_html": {
+    "message": "You used Image Number Helper before Pro existed, so <b>Pro is yours free, forever</b>. Thank you!"
+  },
+  "founderBanner_html": {
+    "message": "<b>Welcome to version 3.</b> As an early user you keep everything — and get every Pro feature free, forever: unlimited numbers, the meeting report, numbered screenshots, jump-to-image and more. Your settings came with you."
+  }
+}

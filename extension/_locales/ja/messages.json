@@ -1,0 +1,382 @@
+{
+  "extName": {
+    "message": "Image Number Helper"
+  },
+  "extShortName": {
+    "message": "Image Numbers"
+  },
+  "extDesc": {
+    "message": "ページ上のすべての画像に番号を付けて、レビューや QA、会議で「左のあれ」ではなく「画像 7」と言えるようにします。"
+  },
+  "cmdToggle": {
+    "message": "このページの画像番号を表示 / 非表示"
+  },
+  "actionTitle": {
+    "message": "Image Number Helper (Alt+Shift+N)"
+  },
+  "menuCopyNumber": {
+    "message": "画像番号をコピー"
+  },
+  "menuToggle": {
+    "message": "画像番号を表示 / 非表示"
+  },
+  "refImage": {
+    "message": "画像 $N$",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "copied": {
+    "message": "コピーしました"
+  },
+  "moreImages_html": {
+    "message": "あと $COUNT$ 枚 · <b>Pro を解除</b>",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errInvalidKey": {
+    "message": "このキーは無効です。領収ページまたはメールからキー全体をコピーしてください。"
+  },
+  "planFree": {
+    "message": "無料"
+  },
+  "planPro": {
+    "message": "Pro"
+  },
+  "toggleTitle": {
+    "message": "番号の表示 / 非表示 (Alt+Shift+N)"
+  },
+  "showNumbers": {
+    "message": "番号を表示"
+  },
+  "imagesNumberedOne": {
+    "message": "枚に番号付け"
+  },
+  "imagesNumberedMany": {
+    "message": "枚に番号付け"
+  },
+  "numbersOff": {
+    "message": "番号はオフです"
+  },
+  "onHost": {
+    "message": "$HOST$ 上",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "offHint": {
+    "message": "$HOST$ に画像 $COUNT$ 枚 · スイッチをオン",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "host": {
+        "content": "$2"
+      }
+    }
+  },
+  "meterCta": {
+    "message": "$TOTAL$ 枚中 $SHOWN$ 枚を表示 — Pro で全 $TOTAL$ 枚に →",
+    "placeholders": {
+      "shown": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "unsupportedTitle": {
+    "message": "通常のウェブページを開いてください"
+  },
+  "unsupportedBody": {
+    "message": "Chrome では、ブラウザのページや Web Store に拡張機能は描画できません。http / https のサイトでお試しください。"
+  },
+  "goToImage": {
+    "message": "画像へ移動"
+  },
+  "show": {
+    "message": "表示"
+  },
+  "copyReport": {
+    "message": "レポートをコピー"
+  },
+  "screenshot": {
+    "message": "スクリーンショット"
+  },
+  "renumber": {
+    "message": "振り直し"
+  },
+  "alwaysOn_html": {
+    "message": "<b>$HOST$</b> では常に番号を付ける",
+    "placeholders": {
+      "host": {
+        "content": "$1"
+      }
+    }
+  },
+  "appearance": {
+    "message": "表示とオプション"
+  },
+  "color": {
+    "message": "色"
+  },
+  "position": {
+    "message": "位置"
+  },
+  "size": {
+    "message": "サイズ"
+  },
+  "skipSmaller": {
+    "message": "これより小さい画像を除外"
+  },
+  "startAt": {
+    "message": "開始番号"
+  },
+  "reportFormat": {
+    "message": "レポート形式"
+  },
+  "fmtMarkdown": {
+    "message": "Markdown 表"
+  },
+  "fmtText": {
+    "message": "プレーンテキスト"
+  },
+  "fmtCsv": {
+    "message": "CSV（表計算）"
+  },
+  "colorRed": {
+    "message": "赤"
+  },
+  "colorBlue": {
+    "message": "青"
+  },
+  "colorBlack": {
+    "message": "黒"
+  },
+  "colorYellow": {
+    "message": "黄"
+  },
+  "colorGreen": {
+    "message": "緑"
+  },
+  "colorPurple": {
+    "message": "紫"
+  },
+  "posTL": {
+    "message": "左上"
+  },
+  "posTR": {
+    "message": "右上"
+  },
+  "posC": {
+    "message": "中央"
+  },
+  "posBL": {
+    "message": "左下"
+  },
+  "posBR": {
+    "message": "右下"
+  },
+  "shortcut": {
+    "message": "ショートカット"
+  },
+  "upgradeCta": {
+    "message": "アップグレード · $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "proCheck": {
+    "message": "Pro ✓"
+  },
+  "back": {
+    "message": "戻る"
+  },
+  "buyHeadline_html": {
+    "message": "すべての画像に番号を。<br>買い切りでずっと使えます。"
+  },
+  "featureLocked_html": {
+    "message": "$FEATURE$は Pro 機能です。<br>買い切りでずっと使えます。",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "featReport": {
+    "message": "会議用レポート"
+  },
+  "featScreens": {
+    "message": "番号付きスクリーンショット"
+  },
+  "featColors": {
+    "message": "追加カラー"
+  },
+  "featPosition": {
+    "message": "番号の位置"
+  },
+  "featStart": {
+    "message": "開始番号の変更"
+  },
+  "perk1_html": {
+    "message": "<b>番号付けは無制限</b>（最初の 8 枚だけではありません）"
+  },
+  "perk2_html": {
+    "message": "<b>会議用レポート</b>：代替テキスト・サイズ・ファイル名を Markdown / テキスト / CSV で"
+  },
+  "perk3_html": {
+    "message": "<b>番号付きスクリーンショット</b>をワンクリックで（Slack や Jira にそのまま）"
+  },
+  "perk4_html": {
+    "message": "<b>6 色・5 か所の位置</b>、開始番号も自由に"
+  },
+  "perk5_html": {
+    "message": "<b>今後の Pro 機能もすべて</b>、すべての Chrome プロフィールで"
+  },
+  "getPro": {
+    "message": "Pro を入手 — $PRICE$（買い切り）",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "fine": {
+    "message": "Stripe による安全な決済 · カード / Apple Pay / Google Pay · 30 日間返金保証"
+  },
+  "haveKey": {
+    "message": "購入済みの方はライセンスキーを貼り付け"
+  },
+  "activate": {
+    "message": "有効化"
+  },
+  "lostKey": {
+    "message": "キーを紛失した場合"
+  },
+  "checking": {
+    "message": "確認中…"
+  },
+  "unlocked": {
+    "message": "Pro が有効になりました！"
+  },
+  "somethingWrong": {
+    "message": "問題が発生しました。"
+  },
+  "youArePro": {
+    "message": "Pro をご利用中です"
+  },
+  "licensedTo_html": {
+    "message": "<b>$EMAIL$</b> にライセンス済み。個人開発ツールへのご支援ありがとうございます！",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "thisBrowser": {
+    "message": "このブラウザ"
+  },
+  "removeLicense": {
+    "message": "このブラウザからライセンスを削除"
+  },
+  "noImage": {
+    "message": "このページに画像 $N$ はありません",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "reportCopied": {
+    "message": "$COUNT$ 枚分のレポートをコピーしました",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "clipboardFail": {
+    "message": "クリップボードにアクセスできません"
+  },
+  "turnOnFirst": {
+    "message": "先に番号をオンにしてください"
+  },
+  "shotSaved": {
+    "message": "スクリーンショットをコピー＆保存しました"
+  },
+  "shotBlocked": {
+    "message": "このページでは Chrome がキャプチャをブロックしました"
+  },
+  "renumbered": {
+    "message": "$COUNT$ 枚を上から順に振り直しました",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeTitle": {
+    "message": "Image Number Helper へようこそ"
+  },
+  "welcomeH1": {
+    "message": "準備完了。「画像 7」と言えば、誰にでも伝わります。"
+  },
+  "welcomeLede": {
+    "message": "Image Number Helper はすべての画像に番号を付けるので、フィードバックや QA、会議で「左のあれ」と指さす必要がなくなります。"
+  },
+  "step1T": {
+    "message": "ピン留め"
+  },
+  "step1B_html": {
+    "message": "Chrome ツールバーのパズルアイコンから <strong>Image Number Helper</strong> をピン留めします。"
+  },
+  "step2T": {
+    "message": "ページに番号を付ける"
+  },
+  "step2B_html": {
+    "message": "<kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>N</kbd> を押すか、ポップアップのスイッチをオンにします。"
+  },
+  "step3T": {
+    "message": "クリックでコピー"
+  },
+  "step3B": {
+    "message": "番号をクリックすると「画像 7」をコピー。ポップアップに番号を入力すると、その画像へジャンプします。"
+  },
+  "tryTitle": {
+    "message": "ここで試してみましょう"
+  },
+  "tryOn": {
+    "message": "これらの画像に番号を付ける"
+  },
+  "tryJump": {
+    "message": "7 番へジャンプ"
+  },
+  "welcomeNote": {
+    "message": "無料版は各ページの最初の 8 枚に番号を付けます。Pro ではすべての画像に番号が付き、会議用レポート、番号付きスクリーンショット、色と位置の変更が使えます。"
+  },
+  "autoAll": {
+    "message": "すべてのサイトで番号を付ける"
+  },
+  "numberStyle": {
+    "message": "番号のスタイル"
+  },
+  "founderTitle": {
+    "message": "初期ユーザー"
+  },
+  "founderLine_html": {
+    "message": "Pro 登場前から Image Number Helper をご利用いただいているため、<b>Pro をずっと無料でお使いいただけます</b>。ありがとうございます！"
+  },
+  "founderBanner_html": {
+    "message": "<b>バージョン 3 へようこそ。</b>初期ユーザーの方はこれまでの機能をそのまま使え、さらに Pro 機能もずっと無料です：番号付けは無制限、会議用レポート、番号付きスクリーンショット、画像へのジャンプなど。設定も引き継がれています。"
+  }
+}

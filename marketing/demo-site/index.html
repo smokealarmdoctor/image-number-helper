@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lumen Home — Spring Collection</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;font:15px/1.5 Inter,system-ui,sans-serif;color:#1d2330;background:#fbfaf8}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid #ece8e1;background:#fff}
+  nav b{font-size:20px;letter-spacing:-.02em} nav span{color:#6b7280;margin-left:24px;font-size:14px}
+  .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;padding:36px 48px}
+  .hero h1{font-size:44px;line-height:1.05;margin:0 0 12px;letter-spacing:-.03em} .hero p{color:#6b7280;max-width:440px}
+  .hero .btn{display:inline-block;background:#1d2330;color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;margin-top:8px}
+  .hero img{width:100%;border-radius:18px;aspect-ratio:16/10;object-fit:cover;display:block}
+  h2{padding:0 48px;margin:12px 0 14px;font-size:22px;letter-spacing:-.01em}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 48px 40px}
+  .card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;display:block;background:#eee}
+  .card h3{font-size:15px;margin:10px 0 2px} .card p{margin:0;color:#6b7280;font-size:14px}
+  .logo{width:22px;height:22px;vertical-align:-5px;margin-right:6px}
+</style>
+</head>
+<body>
+<nav><div><img class="logo" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23e76f51'/%3E%3C/svg%3E"><b>Lumen Home</b><span>Shop</span><span>Journal</span><span>About</span></div><span>Cart (0)</span></nav>
+<section class="hero">
+  <div><h1>The Spring Collection</h1><p>Handmade ceramics and prints for slower mornings. Twelve new pieces, glazed in small batches.</p><a class="btn">Shop the collection</a></div>
+  <img src="photo-01.svg" alt="Sunset over coral hills — spring hero banner">
+</section>
+<h2>New this week</h2>
+<div class="grid" id="grid"></div>
+<script>
+const items=[["Coral mug","$28","Coffee mug, coral glaze"],["Lake print","$45","Mountain lake art print"],["Studio portrait","$60",""],["Fields print","$45","Rolling green fields print"],
+["Teal mug","$28","Coffee mug, teal glaze"],["Night city print","$52","City skyline at night"],["Dunes print","$45",""],["Plum mug","$28","Coffee mug, plum glaze"],
+["Maker portrait","$60","Portrait of the maker"],["Downtown print","$52","Downtown skyline print"],["Indigo mug","$28","Coffee mug, indigo glaze"],["Golden hour print","$45","Golden hour landscape"]];
+const files=[2,4,3,7,5,6,12,8,9,10,11,4];
+document.getElementById('grid').innerHTML=items.map(([n,p,a],i)=>`<div class="card"><img src="photo-${String(files[i]).padStart(2,'0')}.svg" alt="${a}"><h3>${n}</h3><p>${p}</p></div>`).join('');
+</script>
+</body></html>

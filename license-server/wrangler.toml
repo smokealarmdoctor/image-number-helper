@@ -1,0 +1,11 @@
+name = "image-number-helper-license"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+APP_ID = "image-number-helper"
+FROM_EMAIL = "Image Number Helper <keys@your-domain.com>"
+SUPPORT_URL = "https://github.com/smokealarmdoctor/image-number-helper"
+
+# Secrets — set with `npx wrangler secret put NAME` (never commit them):
+#   STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, LICENSE_PRIVATE_JWK, RESEND_API_KEY (optional)

@@ -1,0 +1,20 @@
+{
+  "name": "image-number-helper",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension that numbers images on a page, plus its Stripe license server.",
+  "scripts": {
+    "start": "node license-server/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "keys": "node scripts/gen-keys.mjs",
+    "stripe:setup": "node scripts/stripe-setup.mjs",
+    "package": "node scripts/package.mjs",
+    "issue-key": "node scripts/issue-key.mjs",
+    "publish": "node scripts/publish-cws.mjs",
+    "worker:dev": "cd license-server && npx wrangler dev",
+    "worker:deploy": "cd license-server && npx wrangler deploy",
+    "marketing": "node marketing/build.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

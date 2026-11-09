@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.dev.vars
+*.private.jwk.json
+license-server/.wrangler/
+marketing/.frames/
+marketing/.raw/

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Number Helper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- ============ MAIN ============ -->
+  <main id="view-main" class="view">
+    <header class="top">
+      <div class="brand">
+        <img class="mark" src="../icons/icon48.png" alt="" />
+        <div>
+          <div class="name" data-i18n="extShortName">Image Numbers</div>
+          <button class="plan" id="plan-pill" type="button" data-i18n="planFree">Free</button>
+        </div>
+      </div>
+      <label class="switch" data-i18n-title="toggleTitle">
+        <input type="checkbox" id="toggle" />
+        <span class="track"><span class="thumb"></span></span>
+        <span class="sr" data-i18n="showNumbers">Show numbers</span>
+      </label>
+    </header>
+
+    <section class="status" id="status">
+      <div class="count"><span id="count">0</span><small id="count-label">images numbered</small></div>
+      <div class="host" id="host"></div>
+      <div class="meter" id="meter" hidden>
+        <div class="bar"><span id="meter-fill"></span></div>
+        <button class="link" id="meter-cta" type="button"></button>
+      </div>
+    </section>
+
+    <section class="unsupported" id="unsupported" hidden>
+      <strong data-i18n="unsupportedTitle"></strong>
+      <p data-i18n="unsupportedBody"></p>
+    </section>
+
+    <div id="controls">
+      <form class="jump" id="jump">
+        <label for="jump-n" data-i18n="goToImage"></label>
+        <div class="jump-row">
+          <span class="hash">#</span>
+          <input id="jump-n" type="number" min="1" inputmode="numeric" placeholder="7" />
+          <button type="submit" class="btn" data-i18n="show"></button>
+        </div>
+      </form>
+
+      <div class="actions">
+        <button class="action" id="copy-report" type="button" data-pro>
+          <svg viewBox="0 0 24 24"><path d="M8 4h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm1 4h6m-6 4h6m-6 4h4"/></svg>
+          <span data-i18n="copyReport"></span><i class="lock" aria-label="Pro"></i>
+        </button>
+        <button class="action" id="screenshot" type="button" data-pro>
+          <svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h2l1.5-2h5L16 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><circle cx="12" cy="12.5" r="3.5"/></svg>
+          <span data-i18n="screenshot"></span><i class="lock" aria-label="Pro"></i>
+        </button>
+        <button class="action" id="renumber" type="button">
+          <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+          <span data-i18n="renumber"></span>
+        </button>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="auto-site" />
+        <span id="auto-label"></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="auto-all" />
+        <span data-i18n="autoAll"></span>
+      </label>
+
+      <details class="appearance" id="appearance">
+        <summary data-i18n="appearance"></summary>
+
+        <div class="field">
+          <span class="label" data-i18n="color"></span>
+          <div class="swatches" id="swatches">
+            <button type="button" data-color="red" style="--c:#e5243b" data-i18n-aria="colorRed"></button>
+            <button type="button" data-color="blue" style="--c:#1f6feb" data-i18n-aria="colorBlue"></button>
+            <button type="button" data-color="black" style="--c:#111418" data-i18n-aria="colorBlack" data-pro></button>
+            <button type="button" data-color="yellow" style="--c:#ffd60a" data-i18n-aria="colorYellow" data-pro></button>
+            <button type="button" data-color="green" style="--c:#12b76a" data-i18n-aria="colorGreen" data-pro></button>
+            <button type="button" data-color="purple" style="--c:#7a5af8" data-i18n-aria="colorPurple" data-pro></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label"><span data-i18n="position"></span> <i class="lock" data-pro-hint></i></span>
+          <div class="positions" id="positions">
+            <button type="button" data-pos="tl" data-i18n-aria="posTL"></button>
+            <button type="button" data-pos="tr" data-i18n-aria="posTR"></button>
+            <button type="button" data-pos="center" data-i18n-aria="posC"></button>
+            <button type="button" data-pos="bl" data-i18n-aria="posBL"></button>
+            <button type="button" data-pos="br" data-i18n-aria="posBR"></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="number-style" data-i18n="numberStyle"></label>
+          <select id="number-style">
+            <option value="numbers">1, 2, 3</option>
+            <option value="letters">A, B, C</option>
+            <option value="padded">01, 02, 03</option>
+            <option value="roman">I, II, III</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <span class="label" data-i18n="size"></span>
+          <div class="seg" id="sizes">
+            <button type="button" data-size="s">S</button>
+            <button type="button" data-size="m">M</button>
+            <button type="button" data-size="l">L</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="min-size" data-i18n="skipSmaller"></label>
+          <div class="unit"><input id="min-size" type="number" min="0" max="400" step="4" /><span>px</span></div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="start-at"><span data-i18n="startAt"></span> <i class="lock" data-pro-hint></i></label>
+          <div class="unit"><input id="start-at" type="number" min="0" max="9999" /></div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="report-format" data-i18n="reportFormat"></label>
+          <select id="report-format">
+            <option value="markdown" data-i18n="fmtMarkdown"></option>
+            <option value="text" data-i18n="fmtText"></option>
+            <option value="csv" data-i18n="fmtCsv"></option>
+          </select>
+        </div>
+      </details>
+    </div>
+
+    <footer class="foot">
+      <span><span data-i18n="shortcut"></span> <kbd>Alt</kbd><kbd>Shift</kbd><kbd>N</kbd></span>
+      <button class="link" id="foot-cta" type="button">Upgrade</button>
+    </footer>
+  </main>
+
+  <!-- ============ UPGRADE ============ -->
+  <main id="view-upgrade" class="view" hidden>
+    <header class="top">
+      <button class="back" id="back" type="button" data-i18n-aria="back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="name"><span data-i18n="extShortName"></span> <span class="pro-tag">Pro</span></div>
+      <span></span>
+    </header>
+
+    <section id="buy-block">
+      <h1 id="buy-headline" data-i18n-html="buyHeadline_html"></h1>
+      <ul class="perks">
+        <li data-i18n-html="perk1_html"></li>
+        <li data-i18n-html="perk2_html"></li>
+        <li data-i18n-html="perk3_html"></li>
+        <li data-i18n-html="perk4_html"></li>
+        <li data-i18n-html="perk5_html"></li>
+      </ul>
+      <a class="btn primary big" id="buy" href="#" target="_blank" rel="noopener"></a>
+      <p class="fine" data-i18n="fine"></p>
+    </section>
+
+    <section class="key-block" id="key-block">
+      <label for="license-key" data-i18n="haveKey"></label>
+      <textarea id="license-key" rows="3" spellcheck="false" placeholder="INH1.…"></textarea>
+      <div class="row">
+        <button class="btn" id="activate" type="button" data-i18n="activate"></button>
+        <a class="link" id="recover" href="#" target="_blank" rel="noopener" data-i18n="lostKey"></a>
+      </div>
+      <p class="msg" id="key-msg" role="status"></p>
+    </section>
+
+    <section class="is-pro" id="is-pro" hidden>
+      <div class="pro-badge">✓</div>
+      <h1 data-i18n="youArePro"></h1>
+      <p class="founder" id="founder-tag" hidden data-i18n="founderTitle"></p>
+      <p id="pro-line"></p>
+      <button class="link danger" id="deactivate" type="button" data-i18n="removeLicense"></button>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="i18n.js"></script>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
