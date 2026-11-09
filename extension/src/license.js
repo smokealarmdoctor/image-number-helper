@@ -34,8 +34,18 @@ export async function signLicense(payload, privateJwk) {
   return `${PREFIX}.${body}.${b64urlEncode(sig)}`;
 }
 
-/** Returns the payload when the key is genuine, otherwise null. */
+/**
+ * Returns the payload when the key is genuine, otherwise null. Accepts one
+ * public JWK or a list (old keys stay valid after a signing-key rotation).
+ */
 export async function verifyLicense(raw, publicJwk) {
+  if (Array.isArray(publicJwk)) {
+    for (const jwk of publicJwk) {
+      const payload = await verifyLicense(raw, jwk);
+      if (payload) return payload;
+    }
+    return null;
+  }
   if (!publicJwk) return null;
   const key = normalizeKey(raw);
   const parts = key.split('.');

@@ -143,3 +143,14 @@ test('recover answers identically whether or not the email bought', async () => 
     s.restore();
   }
 });
+
+test('license verifies against any key in a rotated key list', async () => {
+  const a = await keypair();
+  const b = await keypair();
+  const oldKey = await signLicense({ v: 1, plan: 'pro', email: 'old@x.co' }, a.priv);
+  const newKey = await signLicense({ v: 1, plan: 'pro', email: 'new@x.co' }, b.priv);
+  assert.equal((await verifyLicense(oldKey, [a.pub, b.pub])).email, 'old@x.co');
+  assert.equal((await verifyLicense(newKey, [a.pub, b.pub])).email, 'new@x.co');
+  assert.equal(await verifyLicense(newKey, [a.pub]), null);
+  assert.equal(await verifyLicense(oldKey, []), null);
+});
