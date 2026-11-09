@@ -63,7 +63,7 @@ body{width:${W}px;height:${H}px;overflow:hidden;font-family:Inter,system-ui,sans
 <div id="chip" class="abs">Copied: <b>Image 3</b></div>
 <svg id="cursor" class="abs" viewBox="0 0 24 24"><path d="M5 3l14 8-6 2-3 6z" fill="#111418" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
 <div id="cap" class="abs"></div>
-<div id="end" class="abs"><img src="file://${ICON}"><h1>Number every image. Free.</h1><p>First 8 images free on every page · Pro unlocks everything for <b>$4.99 once</b></p>
+<div id="end" class="abs"><img src="file://${ICON}"><h1>Number every image. Free.</h1><p>First 8 images free on every page · Pro unlocks everything for <b>$2.99 once</b></p>
 <div class="cta">Add to Chrome — it’s free</div><p class="sub">Image Number Helper · Chrome Web Store</p></div>
 <script>
 const $=id=>document.getElementById(id);

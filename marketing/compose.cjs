@@ -97,8 +97,14 @@ const scenes = {
   },
   '06-free-and-pro': {
     w: 1280, h: 800,
-    html: head('Free forever · Pro once', 'Free for 8 images.<br>Pro is $4.99, once.', 'No account, no subscription, no tracking. Pro unlocks unlimited numbers, the report, numbered screenshots and styling.') +
-      pop(64, 360, 290, 'popup-free.png') + pop(560, 90, 330, 'popup-upgrade.png') + `<div class="chip" style="left:920px;top:300px">Pay once · <b>$4.99</b></div><div class="chip" style="left:920px;top:370px;background:#fff;color:#111418">No account needed</div><div class="chip" style="left:920px;top:440px;background:#fff;color:#111418">30-day refund</div>`,
+    html: head('Free forever · Pro once', 'Free for 8 images.<br>Pro is $2.99, once.', 'No account, no subscription, no tracking. Pro unlocks unlimited numbers, the report, numbered screenshots and styling.') +
+      pop(64, 360, 290, 'popup-free.png') + pop(560, 90, 330, 'popup-upgrade.png') + `<div class="chip" style="left:920px;top:300px">Pay once · <b>$2.99</b></div><div class="chip" style="left:920px;top:370px;background:#fff;color:#111418">No account needed</div><div class="chip" style="left:920px;top:440px;background:#fff;color:#111418">30-day refund</div>`,
+  },
+
+  '07-image-search': {
+    w: 1280, h: 800,
+    html: head('Works on image search', 'Compare results by number.', '“I like 9 and 16.” Mood boards, competitor research and client calls go faster when every result has a number.') +
+      win(540, 150, 780, 'search-pro.png', 'Image search · handmade ceramic mugs') + `<div class="chip" style="left:64px;top:380px">30 results numbered · <b>0 confusion</b></div>`,
   },
 
   // ---------- promo tiles ----------

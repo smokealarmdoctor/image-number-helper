@@ -30,7 +30,7 @@ We do not collect:
 
 ## Payments
 
-The optional Pro unlock costs **$4.99 USD once** and is paid through Stripe’s hosted checkout. [Stripe’s privacy policy](https://stripe.com/privacy) applies to that purchase. We never see card numbers.
+The optional Pro unlock costs **$2.99 USD once** and is paid through Stripe’s hosted checkout. [Stripe’s privacy policy](https://stripe.com/privacy) applies to that purchase. We never see card numbers.
 
 After payment, our license server creates a license key. The key contains the email you used at checkout so you can recover it later. We store the key with your payment record in Stripe and email it to you once (via our email provider, Resend). Afterwards the extension checks the key offline, and no data is sent when you use the extension. You can ask us to email your key again from the “Lost your key?” page.
 

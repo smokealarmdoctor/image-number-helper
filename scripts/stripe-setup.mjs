@@ -1,7 +1,7 @@
 // One-command Stripe setup for Image Number Helper Pro. Idempotent — safe to re-run.
 //
 //   STRIPE_SECRET_KEY=sk_test_… node scripts/stripe-setup.mjs --worker-url https://image-number-helper-license.<you>.workers.dev
-//   STRIPE_SECRET_KEY=sk_live_… node scripts/stripe-setup.mjs --worker-url … --price 499
+//   STRIPE_SECRET_KEY=sk_live_… node scripts/stripe-setup.mjs --worker-url … --price 299
 //
 // Creates (or reuses) in that Stripe mode:
 //   • Product "Image Number Helper Pro"  (metadata.app = image-number-helper)
@@ -22,11 +22,11 @@ const arg = (name, dflt) => {
 };
 const KEY = process.env.STRIPE_SECRET_KEY;
 const WORKER = (arg('worker-url') || '').replace(/\/$/, '');
-const AMOUNT = Number(arg('price', '499'));
+const AMOUNT = Number(arg('price', '299'));
 const CURRENCY = arg('currency', 'usd');
 const APP = 'image-number-helper';
 if (!KEY || !WORKER) {
-  console.error('Usage: STRIPE_SECRET_KEY=sk_… node scripts/stripe-setup.mjs --worker-url https://… [--price 499] [--currency usd] [--no-promo]');
+  console.error('Usage: STRIPE_SECRET_KEY=sk_… node scripts/stripe-setup.mjs --worker-url https://… [--price 299] [--currency usd] [--no-promo]');
   process.exit(1);
 }
 const live = KEY.startsWith('sk_live_') || KEY.startsWith('rk_live_');

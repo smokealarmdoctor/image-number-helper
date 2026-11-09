@@ -21,7 +21,7 @@ _November 2026_
 3. **Go to image #**: type a number, the page scrolls there and spotlights the image. This is the "can we look at 11 again?" moment from real meetings.
 4. **Stable numbers:** lazy-loaded images get the next number instead of shifting everyone else. A **Renumber** button resets to top-to-bottom order.
 5. **Badges never break the page.** They live in a closed shadow-DOM overlay, ignore page CSS, don't block clicks underneath, and clamp to the visible part of half-scrolled images.
-6. **Skip tiny images** (icons, tracking pixels): default 24 px, adjustable.
+6. **Skip tiny images** (icons, tracking pixels): default 48 px, adjustable.
 7. **"Always number on this site"**, per host, for daily QA targets.
 8. **Toolbar badge count**, plus a popup "13 images numbered" status.
 9. **Upsell at the right moment:** a "+5 more images · Unlock Pro" chip on the page, and a "Showing 8 of 13" meter in the popup. Pro features show a PRO tag and open the upgrade sheet with context ("The meeting report is a Pro feature").
@@ -44,10 +44,15 @@ _November 2026_
 
 ## 3. Making more money
 
-**Current:** $4.99 lifetime. That's low for a B2B-ish tool, but fine as an impulse buy.
+**Price: $2.99 lifetime** (lowered from $4.99, November 2026).
 
-1. **Price test.** Raise to **$9.99 lifetime** and keep `LAUNCH50` (already created in Stripe test mode, 100 uses) for launches and Product Hunt day. Extension buyers are price-insensitive at under $10. Expect revenue per visitor to rise even if conversion dips slightly.
-2. **Team license, $29–49 lifetime for 5 seats.** Same Payment Link flow with a quantity field. The Worker signs `plan: "team", seats: 5` and emails five keys. QA teams and agencies expense this easily.
+1. **Why $2.99.**
+   - **Impulse price:** it's under the price of a coffee, so a buyer doesn't stop to think or ask a manager. Small one-job extensions sell best between $1.99 and $3.99.
+   - **Fees still reasonable:** standard US card fees (2.9% + 30¢) take about 39¢, so you keep about **$2.60 (87%)**. At $1.99 you'd keep about $1.63 (82%), and at $0.99 only about 66¢ (67%). Below $2.99 the fixed 30¢ starts eating the sale.
+   - **Room for a team plan:** a cheap single license makes a 5-seat team license at $9.99–14.99 look like a deal.
+   - **Revisit after 200 sales:** if more than ~3% of weekly users buy, demand is strong and you can test $3.99.
+   - **Launch code:** LAUNCH50 now gives $1.50. Fees leave about $1.16, which is fine for a launch day but not long-term.
+2. **Team license, $9.99–14.99 lifetime for 5 seats.** Same Payment Link flow with a quantity field. The Worker signs `plan: "team", seats: 5` and emails five keys. QA teams and agencies expense this easily.
 3. **"Pro + future features" bundle vs. "Pro 1.x".** Keep lifetime, but reserve AI/compute features for a later subscription.
 4. **AI add-on (subscription, ~$4/mo):** auto-describe images and generate alt text for the report, using a vision model via the Worker. This is the only feature with real running cost, so it's the only one that should be recurring.
 5. **Stripe extras worth turning on:** Apple Pay / Google Pay / Link (zero code; already available on Payment Links), Adaptive Pricing (local currencies), and **Managed Payments** (Stripe acts as merchant of record and handles global VAT/GST). Decide on tax before going live; see `docs/STRIPE-SETUP.md`.

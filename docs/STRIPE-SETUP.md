@@ -7,8 +7,9 @@ Everything is automated after these steps. Expect about 20 minutes the first tim
 | Object | ID |
 |---|---|
 | Product "Image Number Helper Pro" | `prod_VbBascool69IWy` |
-| Price $4.99 one-time (`inh_pro_lifetime_usd_499`) | `price_1UZzDGLuxanaOHjShPPc4FfV` |
-| Payment Link | `plink_1UZzDPLuxanaOHjSOv2ew2z9` → https://buy.stripe.com/test_aFafZifwx32p0Ow8QCbsc01 |
+| Price $2.99 one-time (`inh_pro_lifetime_usd_299`), the product's default | `price_1UZzOHLuxanaOHjS0i5XN4Sh` |
+| Payment Link | `plink_1UZzOPLuxanaOHjSVl54elca` → https://buy.stripe.com/test_bJe4gAgAB46t8gYff0bsc02 |
+| Old $4.99 price and link (deactivated; the old link now says the price moved) | `price_1UZzDGLuxanaOHjShPPc4FfV` / `plink_1UZzDPLuxanaOHjSOv2ew2z9` |
 | Coupon "Launch 50%" + promo code `LAUNCH50` (100 uses) | `GX1KLwCH` / `promo_1UZzDdLuxanaOHjSKeoYPbAI` |
 
 The test Payment Link currently shows Stripe's hosted confirmation page. Step 3 switches it to redirect to your Worker.

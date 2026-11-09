@@ -2,7 +2,7 @@
 // the marked values; everything else is safe to edit by hand.
 
 // Stripe Payment Link for Pro (test-mode link until you run the live setup).
-export const CHECKOUT_URL = 'https://buy.stripe.com/test_aFafZifwx32p0Ow8QCbsc01'; // @checkout-url
+export const CHECKOUT_URL = 'https://buy.stripe.com/test_bJe4gAgAB46t8gYff0bsc02'; // @checkout-url
 
 // Origin of the license Worker (license-server/). Its /success page hands the
 // key to the extension automatically; /recover emails a lost key.
@@ -12,5 +12,5 @@ export const LICENSE_ORIGIN = 'https://image-number-helper-license.example.worke
 // `npm run keys`; the matching private key lives only in the Worker secret.
 export const LICENSE_PUBLIC_JWK = null; // @license-public-jwk
 
-export const PRICE_LABEL = '$4.99';
+export const PRICE_LABEL = '$2.99';
 export const FREE_LIMIT = 8;

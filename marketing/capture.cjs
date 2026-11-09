@@ -24,6 +24,7 @@ function serve(dir, port) {
 
 (async () => {
   const srv = await serve(SITE, 8790);
+  const srv2 = await serve(path.join(__dirname, 'search-mock'), 8791);
   const profile = fs.mkdtempSync(path.join(require('os').tmpdir(), 'inh-'));
   const ctx = await chromium.launchPersistentContext(profile, {
     channel: 'chromium',
@@ -58,7 +59,7 @@ function serve(dir, port) {
 
     // ---- page shots ----
     await setPro(false);
-    await set({ color: 'red', position: 'tl', size: 'm', minSize: 24, startAt: 1 });
+    await set({ color: 'red', position: 'tl', size: 'm', minSize: 48, startAt: 1 });
     await shot('page-off');
     await scroll(470);
     await shot('page-off-grid');
@@ -117,6 +118,29 @@ function serve(dir, port) {
       fs.writeFileSync(path.join(OUT, `report.${f === 'markdown' ? 'md' : f}`), rep.text.replace(/http:\/\/127\.0\.0\.1:8790\//g, 'https://lumenhome.shop/spring'));
     }
 
+    // ---- image search results mockup ----
+    const sp = await ctx.newPage();
+    await sp.goto('http://127.0.0.1:8791/');
+    await sp.waitForSelector('.tile img');
+    await sp.evaluate(() => document.fonts.ready);
+    await wait(500);
+    const sTab = await sw.evaluate(async () => (await chrome.tabs.query({ url: 'http://127.0.0.1:8791/*' }))[0].id);
+    const sSend = (msg) => sw.evaluate(([id, m]) => chrome.tabs.sendMessage(id, m), [sTab, msg]);
+    await set({ color: 'red', position: 'tl', size: 'l' });
+    await sp.screenshot({ path: path.join(OUT, 'search-off.png') });
+    await setPro(false);
+    await sSend({ type: 'toggle', on: true });
+    await wait(400);
+    await sp.screenshot({ path: path.join(OUT, 'search-free.png') });
+    await setPro(true);
+    await wait(400);
+    await sp.screenshot({ path: path.join(OUT, 'search-pro.png') });
+    await sp.screenshot({ path: path.join(OUT, 'search-pro-full.png'), fullPage: true });
+    const searchState = await sSend({ type: 'state' });
+    fs.writeFileSync(path.join(OUT, 'search-state.json'), JSON.stringify(searchState));
+    await sp.close();
+    await page.bringToFront();
+
     // ---- popup shots ----
     const pop = await ctx.newPage();
     await pop.setViewportSize({ width: 340, height: 640 });
@@ -165,6 +189,7 @@ function serve(dir, port) {
   } finally {
     await ctx.close();
     srv.close();
+    srv2.close();
   }
 })().catch((e) => {
   console.error(e);

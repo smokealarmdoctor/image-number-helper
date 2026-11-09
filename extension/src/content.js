@@ -10,7 +10,7 @@
     color: 'red',
     position: 'tl',
     size: 'm',
-    minSize: 24,
+    minSize: 48,
     startAt: 1,
     autoSites: [],
   };

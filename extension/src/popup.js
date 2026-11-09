@@ -5,7 +5,7 @@ const params = new URLSearchParams(location.search);
 const asTab = params.get('tab') === '1';
 if (asTab) document.body.classList.add('tab');
 
-const DEFAULTS = { color: 'red', position: 'tl', size: 'm', minSize: 24, startAt: 1, autoSites: [], reportFormat: 'markdown' };
+const DEFAULTS = { color: 'red', position: 'tl', size: 'm', minSize: 48, startAt: 1, autoSites: [], reportFormat: 'markdown' };
 let settings = { ...DEFAULTS };
 let pro = null;
 let tab = null;

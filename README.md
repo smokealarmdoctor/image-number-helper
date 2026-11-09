@@ -15,7 +15,7 @@ Chrome extension that numbers images on a webpage so reviews, QA, and meetings c
 - Stable numbering while lazy images load. **Renumber** resets the order.
 - Skips icons and tracking pixels (adjustable minimum size), with an “Always number on this site” option.
 
-**Pro: $4.99 once** (secure checkout by Stripe)
+**Pro: $2.99 once** (secure checkout by Stripe)
 - Unlimited numbers.
 - **Meeting report**: alt text, natural/displayed size and file for every number, as Markdown, plain text or CSV. Missing alt text is flagged.
 - **Numbered screenshots**, copied to the clipboard and saved.
@@ -29,7 +29,7 @@ Chrome extension that numbers images on a webpage so reviews, QA, and meetings c
 | `license-server/` | Cloudflare Worker that issues Pro keys from Stripe payments |
 | `scripts/` | `keys`, `stripe:setup`, `issue-key`, `package` |
 | `test/` | `npm test`: license crypto, webhook signatures, Worker routes |
-| `marketing/` | Demo site, capture/compose/video scripts, store graphics and video |
+| `marketing/` | Demo sites (storefront + image search results mockup), capture/compose/video scripts, store graphics, mockups and video |
 | `docs/STRATEGY.md` | Review, UX, revenue and growth plan |
 | `docs/STRIPE-SETUP.md` | Stripe + Worker setup and go-live checklist |
 
@@ -39,7 +39,8 @@ Chrome extension that numbers images on a webpage so reviews, QA, and meetings c
 npm test                      # unit + Worker tests (Node 20+)
 # chrome://extensions → Developer mode → Load unpacked → extension/
 node marketing/capture.cjs    # real screenshots of the extension (Playwright)
-node marketing/compose.cjs    # Chrome Web Store graphics → marketing/store/
+node marketing/compose.cjs    # Chrome Web Store graphics → marketing/store/ (the store takes 5: use 01, 07, 02, 03, 06)
+node scripts/make-icon.cjs    # extension icons from SVG
 node marketing/video.cjs      # demo video → marketing/video/ (needs ffmpeg)
 npm run package               # dist/*.zip for the Web Store
 ```
