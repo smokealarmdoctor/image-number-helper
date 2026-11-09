@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Chrome extension that numbers images on a page, plus its Stripe license server.",
   "scripts": {
+    "start": "node license-server/server.mjs",
     "test": "node --test test/*.test.mjs",
     "keys": "node scripts/gen-keys.mjs",
     "stripe:setup": "node scripts/stripe-setup.mjs",

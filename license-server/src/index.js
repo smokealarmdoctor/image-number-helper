@@ -210,11 +210,17 @@ async function handleWebhook(req, env) {
   return new Response('ok');
 }
 
+function handleRecoverNoEmail(env) {
+  const support = esc(env.SUPPORT_URL || 'https://github.com/smokealarmdoctor/image-number-helper/issues');
+  return recoverForm(`Automatic key emails aren’t switched on yet. Please <a href="${support}">contact support</a> with the email you used at checkout and we’ll send your key.`);
+}
+
 async function handleRecover(req, env) {
   if (req.method !== 'POST') return recoverForm();
   const email = String((await req.formData()).get('email') || '').trim().toLowerCase();
   const generic = 'If that email bought Pro, the key is on its way. Check spam, or open an issue on GitHub if nothing arrives in 10 minutes.';
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return recoverForm('Please enter a valid email.');
+  if (!env.RESEND_API_KEY) return handleRecoverNoEmail(env);
   const list = await stripe(env, 'GET', `/checkout/sessions?limit=20&status=complete&customer_details[email]=${encodeURIComponent(email)}&expand[]=data.payment_intent`);
   const keys = [];
   for (const s of list.data || []) if (isOurPaidSession(s, env)) keys.push((await licenseFor(env, s)).key);
