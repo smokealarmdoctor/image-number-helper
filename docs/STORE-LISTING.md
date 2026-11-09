@@ -8,11 +8,11 @@
 
 ## Release blockers
 
-1. **License server deployed** (Cloudflare Worker, or another host) and the live Stripe payment link pointed at it. The signing keys are already generated.
-2. **Tax decision** for live sales (Stripe Tax registrations, or Managed Payments as merchant of record).
+1. ~~License server deployed and live payment link~~ Done: Render + Stripe Managed Payments. **Remaining: paste the restricted Stripe key into Render** (docs/STRIPE-SETUP.md).
+2. ~~Tax decision~~ Done: Managed Payments.
 3. **One real $2.99 purchase, then a refund**, to confirm the whole flow.
 4. **Video on YouTube** (unlisted is fine). The store's video field needs a YouTube URL.
-5. `npm run package`, which then builds `dist/image-number-helper-3.0.0.zip`.
+5. ~~`npm run package`~~ Done: `dist/image-number-helper-3.0.0.zip`.
 
 ## Uploading
 

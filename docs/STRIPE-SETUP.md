@@ -1,5 +1,33 @@
 # Stripe + license server: setup and go-live
 
+## Live setup (done, November 2026)
+
+| Piece | Where / ID |
+|---|---|
+| License server | Render, free plan: `image-number-helper-license-hecb` → https://image-number-helper-license-hecb.onrender.com (blueprint `render.yaml`, auto-deploys from the release branch) |
+| Signing key | Derived on the server from `LICENSE_SEED`, a secret Render generated. Nobody, including Claude, has seen it. The public half is at `/pubkey` and embedded in `extension/src/config.js`. |
+| Product | `prod_VbDqms5BZsvYmW` "Image Number Helper Pro", tax code `txcd_10202000` (Downloadable Software – personal use) |
+| Price | `price_1Ua1OzLuxanaOHjS1TMgrHkk`: $2.99 one-time |
+| Payment Link | `plink_1Ua1PdLuxanaOHjSVNQUbm4B` → https://buy.stripe.com/aFafZifwx32p0Ow8QCbsc01. **Managed Payments on**, so Stripe is merchant of record and handles sales tax/VAT. After payment it redirects to `/success`. |
+
+**Still needed:** a restricted Stripe key in Render's `STRIPE_SECRET_KEY` (see below). Until it's set, the thank-you page can't confirm payments.
+
+### Adding the Stripe key (about 3 minutes)
+1. Stripe Dashboard (live mode) → Developers → API keys → **Create restricted key**. Name it "image-number-helper license server" and set:
+   - **Checkout Sessions: Read**
+   - **PaymentIntents: Write**
+   - everything else: None
+2. Copy the `rk_live_…` key.
+3. Render Dashboard → `image-number-helper-license-hecb` → **Environment** → `STRIPE_SECRET_KEY` → paste → **Save, rebuild and deploy**.
+
+### Optional later
+- **Key emails and lost-key recovery:** add `RESEND_API_KEY` and `FROM_EMAIL` in Render, then add a Stripe webhook to `/webhook` and its `STRIPE_WEBHOOK_SECRET`. Until then, the "Lost your key?" page points buyers to support.
+- **Render Starter ($7/mo):** stops the free plan sleeping, which otherwise adds a ~30–60 s wait on the thank-you page after a quiet spell.
+
+---
+
+# Reference: generic setup (Cloudflare Worker path)
+
 Everything is automated after these steps. Expect about 20 minutes the first time.
 
 ## Already done (Stripe **test mode**, account "The Smoke Alarm Doctor")
