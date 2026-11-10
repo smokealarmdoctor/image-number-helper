@@ -1,0 +1,29 @@
+O Image Number Helper coloca um número claro em cada imagem de uma página da web, para que você possa dizer “imagem 7” em vez de “aquela da esquerda” em revisões de design, testes de QA, chamadas com clientes e comparações de resultados de busca de imagens.
+
+GRÁTIS
+• Numera as 8 primeiras imagens de qualquer página: pressione Alt+Shift+N ou use o botão no painel da barra de ferramentas.
+• Clique em um número para copiar “Imagem 7”, ou clique com o botão direito em uma imagem → Copiar número da imagem.
+• Vá para qualquer imagem pelo número: a página rola até ela e a destaca.
+• Quatro estilos de etiqueta: 1 2 3, A B C, 01 02 03, I II III.
+• Os números não mudam enquanto imagens de carregamento tardio aparecem; ícones pequenos e imagens ocultas são ignorados (o tamanho mínimo é ajustável).
+• Ative automaticamente nos sites que você escolher, ou em todos.
+• Disponível em English, Español, Português (Brasil), Deutsch, Français e 日本語.
+
+PRO: US$ 2,99, pagamento único, sem assinatura
+• Números ilimitados em todas as páginas
+• Relatório de reunião: texto alternativo, tamanho e nome do arquivo de cada imagem (Markdown, texto ou CSV), com as imagens sem texto alternativo sinalizadas
+• Capturas de tela numeradas, copiadas para a área de transferência e salvas com um clique
+• 6 cores, 5 posições (cantos e centro) e número inicial personalizado
+• Todos os futuros recursos Pro, em todos os seus perfis do Chrome
+Já usava o Image Number Helper antes da versão 3? Você é um usuário fundador: o Pro é seu de graça, para sempre.
+
+COMO USAR
+1. Fixe o ícone depois de instalar a extensão.
+2. Abra qualquer página com imagens e pressione Alt+Shift+N. Os números aparecem sobre as imagens.
+3. Clique em um número para copiá-lo no Slack, em comentários do Figma ou em um ticket.
+4. Opcional: clique em Fazer upgrade no painel para obter o Pro. Ele é ativado automaticamente após o pagamento.
+
+PRIVACIDADE
+Sem conta, sem análises, sem rastreamento. Suas configurações e sua licença Pro ficam no armazenamento de sincronização do Chrome. O conteúdo das páginas nunca é enviado. Relatórios e capturas de tela vão apenas para a área de transferência ou para a pasta de downloads. O pagamento do Pro é feito pela Stripe; nunca vemos o seu cartão. Sua licença é verificada offline, no seu dispositivo.
+
+Site e suporte: https://image-number-helper-site-hecb.onrender.com
