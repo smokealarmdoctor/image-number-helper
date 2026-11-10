@@ -91,7 +91,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 });
 
 chrome.commands.onCommand.addListener(async (command) => {
-  if (command !== 'toggle-numbers') return;
+  if (command !== 'toggle-labels') return;
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (tab?.id) toggleTab(tab.id);
 });

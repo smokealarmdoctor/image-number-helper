@@ -1,0 +1,29 @@
+Image Number Helper puts a clear number on every image on a web page, so you can say “image 7” instead of “the one on the left” in design reviews, QA, client calls and image-search comparisons.
+
+FREE
+• Numbers the first 8 images on any page. Press Alt+Shift+N or use the switch in the toolbar popup.
+• Click a number to copy “Image 7”, or right-click any image → Copy image number.
+• Jump to any image by number: the page scrolls to it and highlights it.
+• Four label styles: 1 2 3, A B C, 01 02 03, I II III.
+• Numbers stay put while lazy images load. Tiny icons and hidden images are skipped (adjustable minimum size).
+• Turn it on automatically for the sites you choose, or for every site.
+• Available in English, Español, Português (Brasil), Deutsch, Français and 日本語.
+
+PRO — $2.99, one payment, no subscription
+• Unlimited numbers on every page
+• Meeting report: alt text, size and file name for every image (Markdown, plain text or CSV), with missing alt text flagged
+• Numbered screenshots, copied to your clipboard and saved in one click
+• 6 badge colors, 5 positions (corners and center) and a custom start number
+• Every future Pro feature, on all your Chrome profiles
+Already using Image Number Helper before version 3? You're a founding user: Pro is yours free, forever.
+
+HOW TO USE
+1. Pin the icon after install.
+2. Open any page with images and press Alt+Shift+N. Numbers appear on the images.
+3. Click a number to copy it into Slack, Figma comments or a ticket.
+4. Optional: click Upgrade in the popup to get Pro. It unlocks automatically after payment.
+
+PRIVACY
+No account, no analytics, no tracking. Settings and your Pro license stay in Chrome sync storage. Page contents are never uploaded. Reports and screenshots only go to your clipboard or downloads folder. Pro checkout is handled by Stripe; we never see your card. Your license is checked offline on your device.
+
+Website and support: https://image-number-helper-site-hecb.onrender.com
