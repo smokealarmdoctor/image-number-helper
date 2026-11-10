@@ -2,7 +2,7 @@
 // the marked values; everything else is safe to edit by hand.
 
 // Live Stripe Payment Link for Pro (Managed Payments: Stripe is merchant of record).
-export const CHECKOUT_URL = 'https://buy.stripe.com/aFafZifwx32p0Ow8QCbsc01'; // @checkout-url
+export const CHECKOUT_URL = 'https://buy.stripe.com/cNi28seyEcO16Kpf5ybEA00'; // @checkout-url
 
 // Origin of the license Worker (license-server/). Its /success page hands the
 // key to the extension automatically; /recover emails a lost key.

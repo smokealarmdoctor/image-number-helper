@@ -37,7 +37,7 @@
     }
   ],
   "commands": {
-    "toggle-numbers": {
+    "toggle-labels": {
       "suggested_key": {
         "default": "Alt+Shift+N"
       },

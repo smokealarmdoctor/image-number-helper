@@ -6,9 +6,12 @@
 |---|---|
 | License server | Render, free plan: `image-number-helper-license-hecb` → https://image-number-helper-license-hecb.onrender.com (blueprint `render.yaml`, auto-deploys from the release branch) |
 | Signing key | Derived on the server from `LICENSE_SEED`, a secret Render generated. Nobody, including Claude, has seen it. The public half is at `/pubkey` and embedded in `extension/src/config.js`. |
-| Product | `prod_VbDqms5BZsvYmW` "Image Number Helper Pro", tax code `txcd_10202000` (Downloadable Software – personal use) |
-| Price | `price_1Ua1OzLuxanaOHjS1TMgrHkk`: $2.99 one-time |
-| Payment Link | `plink_1Ua1PdLuxanaOHjSVNQUbm4B` → https://buy.stripe.com/aFafZifwx32p0Ow8QCbsc01. **Managed Payments on**, so Stripe is merchant of record and handles sales tax/VAT. After payment it redirects to `/success`. |
+| Stripe account | **Image Number Helper** (`acct_1Ua3Y4LZkhdrJQB1`, live, Canadian). Separate from The Smoke Alarm Doctor and FreQuo so receipts, payouts and books stay apart. |
+| Product | `prod_VbJKBpRa0MR9lN` "Image Number Helper Pro", tax code `txcd_10202000` (Downloadable Software – personal use) |
+| Price | `price_1Ua6hgLZkhdrJQB1s5vO1tau`: $2.99 one-time |
+| Payment Link | `plink_1Ua6hpLZkhdrJQB1AhyK0whH` → https://buy.stripe.com/cNi28seyEcO16Kpf5ybEA00. **Managed Payments on**, so Stripe is merchant of record and handles sales tax/VAT. After payment it redirects to `/success`. |
+| Promo code | `LAUNCH50`: 50% off, first 100 uses |
+| Retired | The earlier link and product in The Smoke Alarm Doctor's account (`plink_1Ua1PdLuxanaOHjSVNQUbm4B`) are switched off. |
 
 **Still needed:** a restricted Stripe key in Render's `STRIPE_SECRET_KEY` (see below). Until it's set, the thank-you page can't confirm payments.
 

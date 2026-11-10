@@ -1,0 +1,29 @@
+Image Number Helper versieht jedes Bild auf einer Webseite mit einer klaren Nummer, damit du in Design-Reviews, QA-Durchläufen, Kundencalls und beim Vergleichen von Bildsuchergebnissen „Bild 7“ sagen kannst statt „das links“.
+
+KOSTENLOS
+• Nummeriert die ersten 8 Bilder jeder Seite: Alt+Shift+N drücken oder den Schalter im Popup der Symbolleiste umlegen.
+• Auf eine Nummer klicken kopiert „Bild 7“ – oder Rechtsklick auf ein Bild → Bildnummer kopieren.
+• Per Nummer zu jedem Bild springen: Die Seite scrollt hin und hebt es hervor.
+• Vier Nummernstile: 1 2 3, A B C, 01 02 03, I II III.
+• Die Nummern bleiben stabil, während Bilder nachgeladen werden; kleine Icons und ausgeblendete Bilder werden übersprungen (Mindestgröße einstellbar).
+• Automatisch auf ausgewählten Websites aktivierbar – oder auf allen.
+• Verfügbar in English, Español, Português (Brasil), Deutsch, Français und 日本語.
+
+PRO – einmalig 2,99 US-Dollar, kein Abo
+• Unbegrenzt viele Nummern auf jeder Seite
+• Meeting-Bericht: Alt-Text, Größe und Dateiname jedes Bildes (Markdown, Text oder CSV), fehlender Alt-Text wird markiert
+• Nummerierte Screenshots – mit einem Klick in die Zwischenablage kopiert und gespeichert
+• 6 Farben, 5 Positionen (Ecken und Mitte) und eine eigene Startnummer
+• Alle künftigen Pro-Funktionen, in allen deinen Chrome-Profilen
+Du hast Image Number Helper schon vor Version 3 genutzt? Dann bist du Nutzer der ersten Stunde: Pro ist für dich dauerhaft kostenlos.
+
+SO GEHT’S
+1. Nach der Installation das Symbol anheften.
+2. Eine beliebige Seite mit Bildern öffnen und Alt+Shift+N drücken. Die Nummern erscheinen auf den Bildern.
+3. Auf eine Nummer klicken und sie in Slack, Figma-Kommentare oder ein Ticket einfügen.
+4. Optional: Im Popup auf Upgrade klicken, um Pro zu holen. Es wird nach der Zahlung automatisch freigeschaltet.
+
+DATENSCHUTZ
+Kein Konto, keine Analyse, kein Tracking. Deine Einstellungen und deine Pro-Lizenz liegen im Chrome-Synchronisierungsspeicher. Seiteninhalte werden nie hochgeladen. Berichte und Screenshots gehen nur in die Zwischenablage oder den Download-Ordner. Die Pro-Zahlung läuft über Stripe; deine Karte sehen wir nie. Deine Lizenz wird offline auf deinem Gerät geprüft.
+
+Website und Support: https://image-number-helper-site-hecb.onrender.com

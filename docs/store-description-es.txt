@@ -1,0 +1,29 @@
+Image Number Helper pone un número claro en cada imagen de una página web, para que puedas decir «imagen 7» en lugar de «la de la izquierda» en revisiones de diseño, pruebas de QA, llamadas con clientes y comparaciones de resultados de búsqueda de imágenes.
+
+GRATIS
+• Numera las 8 primeras imágenes de cualquier página: pulsa Alt+Shift+N o usa el interruptor del panel de la barra de herramientas.
+• Haz clic en un número para copiar «Imagen 7», o clic derecho en una imagen → Copiar número de imagen.
+• Salta a cualquier imagen por su número: la página se desplaza hasta ella y la resalta.
+• Cuatro estilos de etiqueta: 1 2 3, A B C, 01 02 03, I II III.
+• Los números no cambian mientras se cargan imágenes diferidas; se omiten los iconos pequeños y las imágenes ocultas (el tamaño mínimo es ajustable).
+• Actívalo automáticamente en los sitios que elijas, o en todos.
+• Disponible en English, Español, Português (Brasil), Deutsch, Français y 日本語.
+
+PRO: 2,99 US$ una sola vez, sin suscripción
+• Números ilimitados en cada página
+• Informe de reunión: texto alternativo, tamaño y nombre de archivo de cada imagen (Markdown, texto o CSV), con las imágenes sin texto alternativo señaladas
+• Capturas numeradas, copiadas al portapapeles y guardadas con un clic
+• 6 colores, 5 posiciones (esquinas y centro) y número inicial personalizado
+• Todas las futuras funciones Pro, en todos tus perfiles de Chrome
+¿Ya usabas Image Number Helper antes de la versión 3? Eres usuario fundador: Pro es tuyo gratis, para siempre.
+
+CÓMO USARLO
+1. Fija el icono después de instalar la extensión.
+2. Abre cualquier página con imágenes y pulsa Alt+Shift+N. Los números aparecen sobre las imágenes.
+3. Haz clic en un número para copiarlo en Slack, en comentarios de Figma o en un ticket.
+4. Opcional: pulsa Mejorar en el panel para obtener Pro. Se activa automáticamente tras el pago.
+
+PRIVACIDAD
+Sin cuenta, sin analítica, sin rastreo. Tu configuración y tu licencia Pro se guardan en el almacenamiento de sincronización de Chrome. El contenido de las páginas nunca se sube. Los informes y las capturas solo van al portapapeles o a tu carpeta de descargas. El pago de Pro lo gestiona Stripe; nunca vemos tu tarjeta. Tu licencia se comprueba sin conexión en tu dispositivo.
+
+Sitio web y soporte: https://image-number-helper-site-hecb.onrender.com
