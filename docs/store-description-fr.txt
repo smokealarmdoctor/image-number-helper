@@ -1,0 +1,29 @@
+Image Number Helper place un numéro bien lisible sur chaque image d’une page web, pour que vous puissiez dire « image 7 » au lieu de « celle de gauche » en revue de design, en QA, en réunion client ou pour comparer des résultats de recherche d’images.
+
+GRATUIT
+• Numérote les 8 premières images de n’importe quelle page : appuyez sur Alt+Shift+N ou utilisez l’interrupteur du panneau de la barre d’outils.
+• Cliquez sur un numéro pour copier « Image 7 », ou faites un clic droit sur une image → Copier le numéro de l’image.
+• Allez à n’importe quelle image grâce à son numéro : la page défile jusqu’à elle et la met en évidence.
+• Quatre styles de numéro : 1 2 3, A B C, 01 02 03, I II III.
+• Les numéros restent stables pendant le chargement différé des images ; les petites icônes et les images masquées sont ignorées (taille minimale réglable).
+• Activation automatique sur les sites de votre choix, ou sur tous.
+• Disponible en English, Español, Português (Brasil), Deutsch, Français et 日本語.
+
+PRO : 2,99 $ US, un seul paiement, sans abonnement
+• Numéros illimités sur chaque page
+• Rapport de réunion : texte alternatif, taille et nom de fichier de chaque image (Markdown, texte ou CSV), avec les images sans texte alternatif signalées
+• Captures d’écran numérotées, copiées dans le presse-papiers et enregistrées en un clic
+• 6 couleurs, 5 positions (coins et centre) et numéro de départ personnalisable
+• Toutes les futures fonctions Pro, sur tous vos profils Chrome
+Vous utilisiez Image Number Helper avant la version 3 ? Vous êtes utilisateur fondateur : Pro est à vous, gratuitement et pour toujours.
+
+COMMENT L’UTILISER
+1. Épinglez l’icône après l’installation.
+2. Ouvrez une page contenant des images et appuyez sur Alt+Shift+N. Les numéros apparaissent sur les images.
+3. Cliquez sur un numéro pour le copier dans Slack, dans des commentaires Figma ou dans un ticket.
+4. Facultatif : cliquez sur Passer à Pro dans le panneau pour obtenir Pro. Il s’active automatiquement après le paiement.
+
+CONFIDENTIALITÉ
+Aucun compte, aucune analyse, aucun pistage. Vos réglages et votre licence Pro restent dans le stockage de synchronisation de Chrome. Le contenu des pages n’est jamais envoyé. Les rapports et les captures d’écran vont uniquement dans le presse-papiers ou le dossier de téléchargements. Le paiement de Pro est géré par Stripe ; nous ne voyons jamais votre carte. Votre licence est vérifiée hors ligne sur votre appareil.
+
+Site web et assistance : https://image-number-helper-site-hecb.onrender.com
