@@ -19,3 +19,17 @@ services:
         value: image-number-helper
       - key: SUPPORT_URL
         value: https://github.com/smokealarmdoctor/image-number-helper/issues
+
+  # Marketing website (static): landing page, pricing, terms, privacy, refunds, support.
+  - type: web
+    name: image-number-helper-site
+    runtime: static
+    buildCommand: python3 site/build-pages.py
+    staticPublishPath: ./site
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
