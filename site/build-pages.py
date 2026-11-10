@@ -14,7 +14,7 @@ HEAD = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title} – Image Number Helper</title>
   <meta name="description" content="{desc}" />
-  <link rel="canonical" href="https://SITE_ORIGIN/{file}" />
+  <link rel="canonical" href="https://image-number-helper-site-hecb.onrender.com/{file}" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon32.png" />
   <link rel="stylesheet" href="assets/site.css" />
 </head>

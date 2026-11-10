@@ -60,7 +60,9 @@ Supply these four values as environment variables. Never commit them.
 
 **Small promo tile:** `marketing/store/tile-small-440x280.png` · **Marquee:** `marketing/store/marquee-1400x560.png`
 
-**Privacy policy URL:** https://github.com/smokealarmdoctor/image-number-helper/blob/main/PRIVACY.md (merge this branch to `main` first so it shows the v2 policy)
+**Website:** https://image-number-helper-site-hecb.onrender.com/ · **Support URL:** https://image-number-helper-site-hecb.onrender.com/support.html
+
+**Privacy policy URL:** https://image-number-helper-site-hecb.onrender.com/privacy.html
 
 ## Privacy tab (the reviewer reads this)
 

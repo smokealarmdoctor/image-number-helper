@@ -18,7 +18,7 @@ services:
       - key: APP_ID
         value: image-number-helper
       - key: SUPPORT_URL
-        value: https://github.com/smokealarmdoctor/image-number-helper/issues
+        value: https://image-number-helper-site-hecb.onrender.com/support.html
 
   # Marketing website (static): landing page, pricing, terms, privacy, refunds, support.
   - type: web
