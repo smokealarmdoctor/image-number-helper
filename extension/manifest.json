@@ -53,5 +53,6 @@
   "host_permissions": [
     "http://*/*",
     "https://*/*"
-  ]
+  ],
+  "homepage_url": "https://image-number-helper-site-hecb.onrender.com/"
 }
