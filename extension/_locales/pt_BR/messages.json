@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Image Number Helper"
+    "message": "Image Number Helper – Numere as imagens de qualquer página"
   },
   "extShortName": {
     "message": "Image Numbers"
@@ -378,5 +378,14 @@
   },
   "founderBanner_html": {
     "message": "<b>Boas-vindas à versão 3.</b> Como usuário pioneiro, você mantém tudo e ganha todos os recursos Pro de graça, para sempre: números ilimitados, relatório de reunião, capturas numeradas, ir para imagem e mais. Suas configurações foram mantidas."
+  },
+  "rateAsk": {
+    "message": "Gostando do Image Number Helper?"
+  },
+  "rateCta": {
+    "message": "Avalie ★"
+  },
+  "rateNo": {
+    "message": "Não, obrigado"
   }
 }

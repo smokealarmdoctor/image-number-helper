@@ -152,6 +152,7 @@
         e.preventDefault();
         e.stopPropagation();
         copyText(chrome.i18n.getMessage('refImage', [label(numbers.get(img))]));
+        chrome.runtime.sendMessage({ type: 'used' }).catch(() => {});
         b.classList.add('copied');
         setTimeout(() => b.classList.remove('copied'), 900);
       });
@@ -413,7 +414,10 @@
         if (!enabled) enable();
         else if (!numbers.has(lastContextImg)) scan();
         const n = numbers.get(lastContextImg);
-        if (n) copyText(chrome.i18n.getMessage('refImage', [label(n)]));
+        if (n) {
+          copyText(chrome.i18n.getMessage('refImage', [label(n)]));
+          chrome.runtime.sendMessage({ type: 'used' }).catch(() => {});
+        }
         reply({ ok: Boolean(n), n });
         break;
       }

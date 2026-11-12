@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to find images with missing alt text – Image Number Helper</title>
+  <meta name="description" content="Why alt text matters, how to find images without it using developer tools, and how to list every image&#x27;s alt text on a page in one click." />
+  <link rel="canonical" href="https://image-number-helper-site-hecb.onrender.com/guides/find-images-with-missing-alt-text.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon32.png" />
+  <link rel="stylesheet" href="../assets/site.css" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to find images with missing alt text" />
+  <meta property="og:description" content="Why alt text matters, how to find images without it using developer tools, and how to list every image&#x27;s alt text on a page in one click." />
+  <meta property="og:image" content="https://image-number-helper-site-hecb.onrender.com/assets/og.jpg" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"How to find images with missing alt text","description":"Why alt text matters, how to find images without it using developer tools, and how to list every image's alt text on a page in one click.","datePublished":"2026-11-12","dateModified":"2026-11-12","image":"https://image-number-helper-site-hecb.onrender.com/assets/og.jpg","author":{"@type":"Organization","name":"Image Number Helper"},"publisher":{"@type":"Organization","name":"Image Number Helper"},"mainEntityOfPage":"https://image-number-helper-site-hecb.onrender.com/guides/find-images-with-missing-alt-text.html"}
+  </script>
+</head>
+<body>
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="../"><img src="../assets/icon48.png" alt="" width="32" height="32" />Image Number Helper</a>
+    <nav><a class="hide-sm" href="./">Guides</a><a class="hide-sm" href="../#pricing">Pricing</a><a class="btn primary small" href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Add to Chrome</a></nav>
+  </div></header>
+  <main class="doc">
+    <h1>How to find images with missing alt text</h1>
+    <p class="meta">Published November 12, 2026</p>
+
+    <p>Alt text describes an image for people who can’t see it: screen-reader users, anyone whose images fail to load, and search engines. Pages with missing alt text are harder to use, and easy to fix once you know where they are.</p>
+
+    <h2>Missing is not the same as empty</h2>
+    <ul>
+      <li><b>No <code>alt</code> attribute at all:</b> a problem. Screen readers may read out the file name instead.</li>
+      <li><b>An empty <code>alt=""</code>:</b> intentional for purely decorative images, and correct for those. Review these case by case.</li>
+    </ul>
+
+    <h2>Find them with developer tools</h2>
+    <p>Open the Console on any page and run:</p>
+    <div class="box"><p style="margin:0"><code>document.querySelectorAll('img:not([alt])').length</code> counts images with no alt attribute.<br />
+    <code>document.querySelectorAll('img[alt=""]').length</code> counts images with an empty alt attribute.</p></div>
+    <p>Add <code>.forEach(img =&gt; console.log(img.currentSrc))</code> to print their addresses. It works, but the list has no connection to what you see on the page.</p>
+
+    <h2>Find them on the page, with numbers</h2>
+    <p><a href="../">Image Number Helper</a> numbers every image on the page. The Pro <b>Copy report</b> button lists each number with its alt text, displayed size, original size and file name, as a Markdown table, plain text or CSV, and marks images without alt text. Paste it into a ticket or spreadsheet and the whole audit is in one place. The report flags images with empty alt text as well as missing ones, so check the decorative images before you “fix” them.</p>
+
+    <h2>Writing good alt text</h2>
+    <ul>
+      <li>Describe what the image is for, not every detail.</li>
+      <li>Keep it short, usually a phrase or one sentence.</li>
+      <li>Skip “image of” and “picture of”. Screen readers already announce it’s an image.</li>
+      <li>If the image is a link or button, describe where it goes or what it does.</li>
+      <li>Leave decorative images with <code>alt=""</code>.</li>
+    </ul>
+    <p>Related: <a href="reference-images-in-a-design-review.html">how to reference images in a design review</a>.</p>
+
+    <div class="box" style="margin-top:32px">
+      <p style="margin:0 0 10px"><b>Try it free.</b> Image Number Helper puts a numbered badge on every image of the page you're looking at. The first 8 images on any page are free; Pro ($2.99, one time) removes the limit and adds the meeting report and numbered screenshots.</p>
+      <a class="btn primary" href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Add to Chrome</a>
+    </div>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Image Number Helper</span><nav>
+    <a href="./">Guides</a><a href="../support.html">Support</a><a href="../refund.html">Refunds</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a><a href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Chrome Web Store</a>
+  </nav></div></footer>
+</body>
+</html>

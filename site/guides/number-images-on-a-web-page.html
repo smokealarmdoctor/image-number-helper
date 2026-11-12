@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to number images on a web page – Image Number Helper</title>
+  <meta name="description" content="Three ways to put numbers on the images of a web page so everyone can say “image 7”: screenshots, browser developer tools, and a free Chrome extension." />
+  <link rel="canonical" href="https://image-number-helper-site-hecb.onrender.com/guides/number-images-on-a-web-page.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon32.png" />
+  <link rel="stylesheet" href="../assets/site.css" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to number images on a web page" />
+  <meta property="og:description" content="Three ways to put numbers on the images of a web page so everyone can say “image 7”: screenshots, browser developer tools, and a free Chrome extension." />
+  <meta property="og:image" content="https://image-number-helper-site-hecb.onrender.com/assets/og.jpg" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"How to number images on a web page","description":"Three ways to put numbers on the images of a web page so everyone can say \u201cimage 7\u201d: screenshots, browser developer tools, and a free Chrome extension.","datePublished":"2026-11-12","dateModified":"2026-11-12","image":"https://image-number-helper-site-hecb.onrender.com/assets/og.jpg","author":{"@type":"Organization","name":"Image Number Helper"},"publisher":{"@type":"Organization","name":"Image Number Helper"},"mainEntityOfPage":"https://image-number-helper-site-hecb.onrender.com/guides/number-images-on-a-web-page.html"}
+  </script>
+</head>
+<body>
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="../"><img src="../assets/icon48.png" alt="" width="32" height="32" />Image Number Helper</a>
+    <nav><a class="hide-sm" href="./">Guides</a><a class="hide-sm" href="../#pricing">Pricing</a><a class="btn primary small" href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Add to Chrome</a></nav>
+  </div></header>
+  <main class="doc">
+    <h1>How to number images on a web page</h1>
+    <p class="meta">Published November 12, 2026</p>
+
+    <p>When several people look at the same page, “the second one on the right” quickly turns into a guessing game. Numbering the images fixes it: everyone says “image 7” and means the same thing. Here are three ways to do it, from slowest to fastest.</p>
+
+    <h2>1. Annotate a screenshot</h2>
+    <p>Take a screenshot, add numbers in an image editor or whiteboard tool, and share it. It works anywhere, but it is a snapshot: it goes stale as soon as the page changes, and it only covers what was on screen. Long pages need several screenshots.</p>
+
+    <h2>2. Use your browser’s developer tools</h2>
+    <p>Developer tools can list the images on a page, but they don’t label them visually. In the Console, <code>document.images.length</code> tells you how many <code>&lt;img&gt;</code> elements the page has, and <code>[...document.images].map((img, i) =&gt; (i + 1) + ': ' + img.currentSrc)</code> prints a numbered list of their addresses. That is handy for a QA checklist, but nobody in a meeting can see those numbers on the page itself.</p>
+
+    <h2>3. Put the numbers on the page</h2>
+    <p>A browser extension can draw a numbered badge over every image, so you can share your screen and say “look at image 7.” <a href="../">Image Number Helper</a> does this in one keystroke:</p>
+    <ol>
+      <li><a href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf">Install it from the Chrome Web Store</a>.</li>
+      <li>Open any page and press <b>Alt + Shift + N</b>. Numbers appear on the images.</li>
+      <li>Click a number to copy “Image 7”, ready to paste into chat or a ticket.</li>
+      <li>Type a number in the extension popup and the page scrolls to that image and highlights it.</li>
+    </ol>
+
+    <h2>Tips for clean numbering</h2>
+    <ul>
+      <li><b>Numbers follow the order images are found on the page.</b> Images that load later (lazy loading) get the next number instead of shifting everything else. If the page changes a lot, use <i>Renumber</i> to start again from the top.</li>
+      <li><b>Tiny images are skipped</b> so icons and tracking pixels don’t clutter the page. The minimum size is adjustable.</li>
+      <li><b>Only <code>&lt;img&gt;</code> elements are numbered.</b> Images set as CSS backgrounds are not.</li>
+      <li><b>Pick a style that suits your team:</b> 1 2 3, A B C, 01 02 03 or I II III.</li>
+    </ul>
+    <p>Related: <a href="reference-images-in-a-design-review.html">how to reference images in a design review</a> and <a href="find-images-with-missing-alt-text.html">how to find images with missing alt text</a>.</p>
+
+    <div class="box" style="margin-top:32px">
+      <p style="margin:0 0 10px"><b>Try it free.</b> Image Number Helper puts a numbered badge on every image of the page you're looking at. The first 8 images on any page are free; Pro ($2.99, one time) removes the limit and adds the meeting report and numbered screenshots.</p>
+      <a class="btn primary" href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Add to Chrome</a>
+    </div>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Image Number Helper</span><nav>
+    <a href="./">Guides</a><a href="../support.html">Support</a><a href="../refund.html">Refunds</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a><a href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Chrome Web Store</a>
+  </nav></div></footer>
+</body>
+</html>

@@ -124,3 +124,8 @@ footer a:hover { color: var(--text); }
   .brand img { width: 26px; height: 26px; }
   .nav .btn.small { padding: 7px 12px; font-size: 13px; }
 }
+
+/* long code snippets must wrap on phones */
+.doc code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .88em; background: color-mix(in srgb, var(--text) 8%, transparent); padding: 1px 5px; border-radius: 5px; overflow-wrap: anywhere; word-break: break-word; }
+.doc .box, .doc li, .doc p { overflow-wrap: anywhere; }
+.doc h2 a { text-decoration: none; }

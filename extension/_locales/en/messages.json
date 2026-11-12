@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Image Number Helper"
+    "message": "Image Number Helper – Number & Label Images on Any Page"
   },
   "extShortName": {
     "message": "Image Numbers"
@@ -378,5 +378,14 @@
   },
   "founderBanner_html": {
     "message": "<b>Welcome to version 3.</b> As an early user you keep everything — and get every Pro feature free, forever: unlimited numbers, the meeting report, numbered screenshots, jump-to-image and more. Your settings came with you."
+  },
+  "rateAsk": {
+    "message": "Enjoying Image Number Helper?"
+  },
+  "rateCta": {
+    "message": "Rate it ★"
+  },
+  "rateNo": {
+    "message": "No thanks"
   }
 }

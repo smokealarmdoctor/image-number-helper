@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Image Number Helper"
+    "message": "Image Number Helper – ページ上の画像に番号を付ける"
   },
   "extShortName": {
     "message": "Image Numbers"
@@ -378,5 +378,14 @@
   },
   "founderBanner_html": {
     "message": "<b>バージョン 3 へようこそ。</b>初期ユーザーの方はこれまでの機能をそのまま使え、さらに Pro 機能もずっと無料です：番号付けは無制限、会議用レポート、番号付きスクリーンショット、画像へのジャンプなど。設定も引き継がれています。"
+  },
+  "rateAsk": {
+    "message": "Image Number Helper は役に立っていますか？"
+  },
+  "rateCta": {
+    "message": "評価する ★"
+  },
+  "rateNo": {
+    "message": "結構です"
   }
 }
