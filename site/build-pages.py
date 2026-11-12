@@ -59,7 +59,7 @@ PAGES = {
     <h2>How to request a refund</h2>
     <p>Open a request on our <a href="support.html">support page</a>, or use the link in your Stripe receipt email to contact the seller. Tell us the email you used at checkout. Refunds go back to your original payment method, usually within 5–10 business days depending on your bank.</p>
     <h2>After a refund</h2>
-    <p>Your Pro license is deactivated. The free version of the extension keeps working.</p>
+    <p>Your Pro license is cancelled and should no longer be used. The free version of the extension keeps working. Licenses are checked offline on your device, so Pro features may keep working until you remove the license (extension popup → Upgrade → Remove license) or update to a version that blocks refunded keys.</p>
     <h2>Statutory rights</h2>
     <p>This policy doesn’t limit any rights you have under consumer protection law where you live, including any statutory withdrawal period for digital content.</p>
 """),
@@ -71,7 +71,7 @@ PAGES = {
     <h2>2. Pro license</h2>
     <ul>
       <li>Pro is a one-time purchase that unlocks additional features of the extension for the purchaser, on all Chrome profiles they personally use.</li>
-      <li>The license is personal and non-transferable. Please don’t share or publish your license key; keys that are clearly shared publicly may be deactivated.</li>
+      <li>The license is personal and non-transferable. Please don’t share or publish your license key. Keys that are shared publicly or refunded may be blocked in a future version of the extension.</li>
       <li>“Lifetime” means for as long as we continue to offer the extension. If we ever discontinue it, we’ll give a final version that keeps working for existing Pro users where technically possible.</li>
       <li>Users who installed the extension before Pro was introduced (“founding users”) receive Pro at no charge.</li>
     </ul>
