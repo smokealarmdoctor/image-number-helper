@@ -1,6 +1,6 @@
 # Privacy policy — Image Number Helper
 
-Last updated: November 10, 2026
+Last updated: November 12, 2026
 
 Image Number Helper is a Chrome extension that overlays numbered badges on images in the page you are viewing so you can refer to them in reviews, QA, and meetings.
 
@@ -13,6 +13,8 @@ We do not create accounts, run analytics, or send page contents to a server.
 Settings (label style, colors, the sites you choose to auto-number, and your license key) are stored in Chrome’s sync storage on your Google account so they follow you between browsers. That storage never leaves your Google account except as Chrome already syncs it.
 
 The “copy report” and “screenshot” actions (Pro) write image alt text, dimensions, file names, or a picture of the visible page to your clipboard and, for screenshots, your downloads folder. That data never leaves your device unless you paste or share it somewhere.
+
+A small usage counter (how many times you have used a feature and the date you first did) is kept only on your device, in Chrome’s local storage, to decide when to show a one-time invitation to rate the extension. It is never sent anywhere.
 
 We do not collect:
 - browsing history

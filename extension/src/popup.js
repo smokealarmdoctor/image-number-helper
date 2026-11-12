@@ -1,4 +1,5 @@
 import { CHECKOUT_URL, FREE_LIMIT, LICENSE_ORIGIN, PRICE_LABEL } from './config.js';
+import { STORE_REVIEWS_URL, bumpUsage, markRated, shouldAskForRating } from './rating.js';
 
 const $ = (s) => document.querySelector(s);
 const params = new URLSearchParams(location.search);
@@ -146,7 +147,10 @@ $('#jump').addEventListener('submit', async (e) => {
   const n = Number($('#jump-n').value);
   if (!n) return;
   const res = await send({ type: 'jump', n });
-  if (res?.result === true) window.close();
+  if (res?.result === true) {
+    await bumpUsage();
+    window.close();
+  }
   else if (res?.result === 'locked') requirePro(t('refImage', n));
   else toast(t('noImage', n));
   refreshState();
@@ -156,7 +160,9 @@ $('#copy-report').addEventListener('click', async () => {
   if (!requirePro(t('featReport'))) return;
   const res = await send({ type: 'report', format: settings.reportFormat });
   if (!res?.text) return toast(t('turnOnFirst'));
-  toast((await copyText(res.text)) ? t('reportCopied', res.total) : t('clipboardFail'));
+  const copied = await copyText(res.text);
+  if (copied) bumpUsage();
+  toast(copied ? t('reportCopied', res.total) : t('clipboardFail'));
 });
 
 $('#screenshot').addEventListener('click', async () => {
@@ -171,6 +177,7 @@ $('#screenshot').addEventListener('click', async () => {
     a.href = dataUrl;
     a.download = `numbered-${(pageState?.host || 'page').replace(/[^\w.-]/g, '_')}-${Date.now()}.png`;
     a.click();
+    bumpUsage();
     toast(t('shotSaved'));
   } catch {
     toast(t('shotBlocked'));
@@ -235,6 +242,14 @@ $('#auto-all').addEventListener('change', async (e) => {
 });
 
 for (const id of ['#plan-pill', '#foot-cta', '#meter-cta']) $(id).addEventListener('click', () => show('upgrade'));
+$('#rate-go').addEventListener('click', () => {
+  markRated();
+  $('#rate').hidden = true;
+});
+$('#rate-no').addEventListener('click', () => {
+  markRated();
+  $('#rate').hidden = true;
+});
 $('#back').addEventListener('click', () => (asTab ? window.close() : show('main')));
 
 $('#activate').addEventListener('click', async () => {
@@ -266,7 +281,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
 (async () => {
   const [s, l, tabs] = await Promise.all([
     chrome.storage.sync.get(DEFAULTS),
-    chrome.storage.local.get({ pro: null }),
+    chrome.storage.local.get({ pro: null, rate: null }),
     // ?tabId= lets the popup be opened as a page against a specific tab (used for docs/screenshots).
     params.get('tabId')
       ? chrome.tabs.get(Number(params.get('tabId'))).then((t) => [t])
@@ -277,6 +292,8 @@ chrome.storage.onChanged.addListener((changes, area) => {
   settings = { ...DEFAULTS, ...s };
   pro = l.pro;
   tab = tabs[0] || null;
+  $('#rate').hidden = !shouldAskForRating(l.rate);
+  $('#rate-go').href = STORE_REVIEWS_URL;
   renderPlan();
   renderSettings();
   if (params.get('view') === 'upgrade') return show('upgrade');

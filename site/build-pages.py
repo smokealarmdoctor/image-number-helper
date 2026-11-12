@@ -5,7 +5,7 @@ import os, re, html
 HERE = os.path.dirname(os.path.abspath(__file__))
 CWS = "https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf"
 ISSUES = "https://github.com/smokealarmdoctor/image-number-helper/issues"
-UPDATED = "November 10, 2026"
+UPDATED = "November 12, 2026"
 
 HEAD = """<!doctype html>
 <html lang="en">
@@ -21,7 +21,7 @@ HEAD = """<!doctype html>
 <body>
   <header class="nav"><div class="wrap">
     <a class="brand" href="./"><img src="assets/icon48.png" alt="" width="32" height="32" />Image Number Helper</a>
-    <nav><a class="hide-sm" href="./#pricing">Pricing</a><a class="hide-sm" href="support.html">Support</a><a class="btn primary small" href="{cws}" rel="noopener">Add to Chrome</a></nav>
+    <nav><a class="hide-sm" href="guides/">Guides</a><a class="hide-sm" href="./#pricing">Pricing</a><a class="hide-sm" href="support.html">Support</a><a class="btn primary small" href="{cws}" rel="noopener">Add to Chrome</a></nav>
   </div></header>
   <main class="doc">
     <h1>{title}</h1>
@@ -29,7 +29,7 @@ HEAD = """<!doctype html>
 {body}
   </main>
   <footer><div class="wrap"><span>© 2026 Image Number Helper</span><nav>
-    <a href="support.html">Support</a><a href="refund.html">Refunds</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="{cws}" rel="noopener">Chrome Web Store</a>
+    <a href="guides/">Guides</a><a href="support.html">Support</a><a href="refund.html">Refunds</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="{cws}" rel="noopener">Chrome Web Store</a>
   </nav></div></footer>
 </body>
 </html>
@@ -118,3 +118,6 @@ for file, (title, desc, body) in PAGES.items():
     with open(os.path.join(HERE, file), "w", encoding="utf-8") as f:
         f.write(HEAD.format(title=title, desc=desc, file=file, cws=CWS, updated=UPDATED, body=body.rstrip()))
 print("wrote", ", ".join(PAGES))
+
+import runpy
+runpy.run_path(os.path.join(HERE, "build-guides.py"), run_name="__main__")

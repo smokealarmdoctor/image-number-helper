@@ -11,7 +11,7 @@ LANGS = ["en", "es", "pt_BR", "de", "fr", "ja"]
 
 # key: (en, es, pt_BR, de, fr, ja)
 S = {
-"extName": ("Image Number Helper", "Image Number Helper", "Image Number Helper", "Image Number Helper", "Image Number Helper", "Image Number Helper"),
+"extName": ("Image Number Helper – Number & Label Images on Any Page", "Image Number Helper – Numera las imágenes de cualquier página", "Image Number Helper – Numere as imagens de qualquer página", "Image Number Helper – Bilder auf jeder Seite nummerieren", "Image Number Helper – Numérotez les images de toute page", "Image Number Helper – ページ上の画像に番号を付ける"),
 "extShortName": ("Image Numbers", "Image Numbers", "Image Numbers", "Image Numbers", "Image Numbers", "Image Numbers"),
 "extDesc": (
  "Number every image on a page so reviews, QA and meetings can say “image 7” instead of “the one on the left.”",
@@ -120,6 +120,9 @@ S = {
 "founderTitle": ("Founding user", "Usuario fundador", "Usuário fundador", "Nutzer der ersten Stunde", "Utilisateur fondateur", "初期ユーザー"),
 "founderLine_html": ("You used Image Number Helper before Pro existed, so <b>Pro is yours free, forever</b>. Thank you!", "Usabas Image Number Helper antes de que existiera Pro, así que <b>Pro es tuyo gratis, para siempre</b>. ¡Gracias!", "Você usava o Image Number Helper antes do Pro existir, então <b>o Pro é seu de graça, para sempre</b>. Obrigado!", "Du hast Image Number Helper schon vor Pro genutzt – deshalb <b>bekommst du Pro gratis, für immer</b>. Danke!", "Vous utilisiez Image Number Helper avant Pro : <b>Pro est à vous, gratuitement et pour toujours</b>. Merci !", "Pro 登場前から Image Number Helper をご利用いただいているため、<b>Pro をずっと無料でお使いいただけます</b>。ありがとうございます！"),
 "founderBanner_html": ("<b>Welcome to version 3.</b> As an early user you keep everything — and get every Pro feature free, forever: unlimited numbers, the meeting report, numbered screenshots, jump-to-image and more. Your settings came with you.", "<b>Bienvenido a la versión 3.</b> Como usuario pionero lo conservas todo y además tienes todas las funciones Pro gratis para siempre: números ilimitados, informe de reunión, capturas numeradas, ir a imagen y más. Tu configuración se ha mantenido.", "<b>Boas-vindas à versão 3.</b> Como usuário pioneiro, você mantém tudo e ganha todos os recursos Pro de graça, para sempre: números ilimitados, relatório de reunião, capturas numeradas, ir para imagem e mais. Suas configurações foram mantidas.", "<b>Willkommen bei Version 3.</b> Als früher Nutzer behältst du alles – und bekommst alle Pro-Funktionen gratis, für immer: unbegrenzte Nummern, Meeting-Bericht, nummerierte Screenshots, Bildsprung und mehr. Deine Einstellungen wurden übernommen.", "<b>Bienvenue dans la version 3.</b> En tant qu’utilisateur de la première heure, vous gardez tout et obtenez toutes les fonctions Pro gratuitement, pour toujours : numéros illimités, rapport de réunion, captures numérotées, accès direct à une image, et plus. Vos réglages ont été conservés.", "<b>バージョン 3 へようこそ。</b>初期ユーザーの方はこれまでの機能をそのまま使え、さらに Pro 機能もずっと無料です：番号付けは無制限、会議用レポート、番号付きスクリーンショット、画像へのジャンプなど。設定も引き継がれています。"),
+"rateAsk": ("Enjoying Image Number Helper?", "¿Te gusta Image Number Helper?", "Gostando do Image Number Helper?", "Gefällt dir Image Number Helper?", "Image Number Helper vous plaît ?", "Image Number Helper は役に立っていますか？"),
+"rateCta": ("Rate it ★", "Valóralo ★", "Avalie ★", "Bewerten ★", "Notez-le ★", "評価する ★"),
+"rateNo": ("No thanks", "No, gracias", "Não, obrigado", "Nein danke", "Non merci", "結構です"),
 }
 
 def build():

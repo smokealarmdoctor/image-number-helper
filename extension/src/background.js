@@ -1,6 +1,7 @@
 import { LICENSE_ORIGIN, LICENSE_PUBLIC_JWK } from './config.js';
 import { normalizeKey, verifyLicense } from './license.js';
 import { mapLegacySettings, LEGACY_KEYS } from './migrate.js';
+import { bumpUsage } from './rating.js';
 
 // ---------- license ----------
 async function activate(rawKey) {
@@ -100,6 +101,9 @@ chrome.runtime.onMessage.addListener((msg, sender, reply) => {
   switch (msg?.type) {
     case 'count':
       if (sender.tab?.id) setCount(sender.tab.id, msg.count);
+      return false;
+    case 'used':
+      bumpUsage();
       return false;
     case 'open-upgrade':
       openUpgrade();
