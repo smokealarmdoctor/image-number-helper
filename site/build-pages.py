@@ -121,3 +121,18 @@ print("wrote", ", ".join(PAGES))
 
 import runpy
 runpy.run_path(os.path.join(HERE, "build-guides.py"), run_name="__main__")
+
+# Google Search Console: if site/google-verification.txt holds the token (the "content" value of
+# the verification meta tag), add the tag to every page. Safe to run repeatedly.
+_tok = os.path.join(HERE, "google-verification.txt")
+_token = open(_tok, encoding="utf-8").read().strip() if os.path.exists(_tok) else ""
+if _token:
+    _tag = f'  <meta name="google-site-verification" content="{html.escape(_token, quote=True)}" />\n'
+    for _root, _dirs, _files in os.walk(HERE):
+        for _name in _files:
+            if _name.endswith(".html"):
+                _p = os.path.join(_root, _name)
+                _s = open(_p, encoding="utf-8").read()
+                if "google-site-verification" not in _s and "</head>" in _s:
+                    open(_p, "w", encoding="utf-8").write(_s.replace("</head>", _tag + "</head>", 1))
+    print("added Search Console verification tag")
