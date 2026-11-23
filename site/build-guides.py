@@ -148,7 +148,52 @@ GUIDES = [
       <li>If the image is a link or button, describe where it goes or what it does.</li>
       <li>Leave decorative images with <code>alt=""</code>.</li>
     </ul>
-    <p>Related: <a href="reference-images-in-a-design-review.html">how to reference images in a design review</a>.</p>
+    <p>Related: <a href="audit-image-alt-text-on-a-page.html">a full step-by-step alt text audit</a> and <a href="reference-images-in-a-design-review.html">how to reference images in a design review</a>.</p>
+""",
+    },
+    {
+        "file": "audit-image-alt-text-on-a-page.html",
+        "date": "2026-11-23",
+        "title": "How to audit image alt text on any web page",
+        "desc": "A step-by-step alt text audit: a copy-paste console snippet that lists every image's alt status, what to flag, how to decide what each image needs, and how to report the results.",
+        "blurb": "A practical alt text audit: a free console snippet, a checklist of what to flag, and how to hand the results to someone who can fix them.",
+        "body": """
+    <p>An alt text audit answers one question for every image on a page: <i>does a person who can’t see this image get what they need?</i> It takes about ten minutes per page once you have a routine. This guide gives you the routine, a free snippet that works in any browser, and a way to report the results.</p>
+
+    <h2>Step 1: list every image and its alt status</h2>
+    <p>Open the page, open the browser Console (F12, then the Console tab), paste this and press Enter:</p>
+    <div class="box"><pre style="margin:0;white-space:pre-wrap;overflow-wrap:anywhere"><code>console.table([...document.images].map((img, i) =&gt; ({
+  n: i + 1,
+  alt: !img.hasAttribute('alt') ? 'MISSING' : img.alt === '' ? '(empty)' : img.alt,
+  shown: img.width + '×' + img.height,
+  file: (img.currentSrc || img.src).split('/').pop().split('?')[0].slice(0, 40)
+})))</code></pre></div>
+    <p>You get a table with one row per <code>&lt;img&gt;</code>: its position, its alt text (or <b>MISSING</b> / <b>(empty)</b>), its displayed size and its file name. Scroll the page to the bottom first so lazy-loaded images are included, then run it again.</p>
+    <p>Two limits to know about. The numbers here follow the page’s source order, so they will not always match the badges an extension draws on the screen. And it only sees <code>&lt;img&gt;</code> elements: images used as CSS backgrounds, inline SVG and <code>&lt;canvas&gt;</code> need to be checked by hand.</p>
+
+    <h2>Step 2: sort each row into one of four groups</h2>
+    <ul>
+      <li><b>MISSING.</b> No <code>alt</code> attribute. This is the real failure: screen readers may read out the file name instead. Every row here needs a decision.</li>
+      <li><b>(empty).</b> <code>alt=""</code> tells assistive technology to skip the image. Correct for decoration, wrong for anything that carries meaning, such as a product photo or a chart. Look at each one.</li>
+      <li><b>Alt text that is really a file name,</b> such as <code>IMG_2041.jpg</code> or <code>hero-final-v3</code>. It looks present but tells the reader nothing.</li>
+      <li><b>Alt text that is present but weak:</b> “image”, “photo”, the same sentence repeated on every image, or a paragraph-long description of a simple icon.</li>
+    </ul>
+
+    <h2>Step 3: decide what each image needs</h2>
+    <p>Ask what the image is <i>for</i>, not what it looks like:</p>
+    <ul>
+      <li><b>Informs</b> (photo, chart, diagram): a short description of the point it makes. For a chart, give the takeaway and put the data in the text nearby.</li>
+      <li><b>Acts</b> (logo that links home, icon button): describe the destination or action, such as “Home” or “Search”, not the picture.</li>
+      <li><b>Decorates</b> (divider, background flourish, a photo that only repeats the text beside it): <code>alt=""</code>.</li>
+    </ul>
+    <p>The W3C’s <a href="https://www.w3.org/WAI/tutorials/images/decision-tree/" rel="noopener">alt text decision tree</a> walks through the same questions. Missing text alternatives fall under WCAG success criterion 1.1.1, Non-text Content.</p>
+
+    <h2>Step 4: write the report so someone can act on it</h2>
+    <p>A list of file names is hard to fix; a list of <i>which image on which page</i> is easy. For each finding record the page address, the image number, what it shows, the problem (missing, empty but meaningful, file name, weak) and the suggested alt text. In a meeting or a ticket, the image number is what lets everyone find the same image without describing it.</p>
+
+    <h2>The faster way: numbers on the page</h2>
+    <p><a href="../">Image Number Helper</a> draws a numbered badge on every image, so you can see which row of your notes is which picture and say “image 12 has no alt text” in a call. Its Pro <b>Copy report</b> button lists each number with its alt text, displayed size, original size and file name as Markdown, plain text or CSV, and flags images with missing or empty alt text. The free version numbers the first 8 images on a page, which is enough to try the workflow; Pro ($2.99, one time) removes the limit and adds the report.</p>
+    <p>Related: <a href="find-images-with-missing-alt-text.html">a short guide to finding images with missing alt text</a> and <a href="reference-images-in-a-design-review.html">how to reference images in a design review</a>.</p>
 """,
     },
 ]
@@ -164,12 +209,12 @@ def render(g):
         '"mainEntityOfPage":"%s/guides/%s"}\n  </script>\n'
     ) % (
         __import__("json").dumps(g["title"]), __import__("json").dumps(g["desc"]),
-        PUBLISHED, PUBLISHED, ORIGIN, ORIGIN, g["file"],
+        g.get("date", PUBLISHED), g.get("date", PUBLISHED), ORIGIN, ORIGIN, g["file"],
     )
     body = g["body"].replace("{cws}", CWS) + CTA
     return TEMPLATE.format(
         title=html.escape(g["title"]), desc=html.escape(g["desc"], quote=True), file=g["file"],
-        origin=ORIGIN, cws=CWS, jsonld=jsonld, meta="Published November 12, 2026", body=body.rstrip(),
+        origin=ORIGIN, cws=CWS, jsonld=jsonld, meta="Published " + __import__("datetime").date.fromisoformat(g.get("date", PUBLISHED)).strftime("%B %-d, %Y"), body=body.rstrip(),
     )
 
 
@@ -193,9 +238,11 @@ def build():
             f.write(render(g))
     with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
         f.write(render_index())
-    pages = ["", "support.html", "refund.html", "terms.html", "privacy.html", "guides/"] + [f"guides/{g['file']}" for g in GUIDES]
+    pages = [(p, PUBLISHED) for p in ["", "support.html", "refund.html", "terms.html", "privacy.html"]]
+    pages += [("guides/", max(g.get("date", PUBLISHED) for g in GUIDES))]
+    pages += [(f"guides/{g['file']}", g.get("date", PUBLISHED)) for g in GUIDES]
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    xml += "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{PUBLISHED}</lastmod></url>\n" for p in pages) + "</urlset>\n"
+    xml += "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{d}</lastmod></url>\n" for p, d in pages) + "</urlset>\n"
     with open(os.path.join(HERE, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(xml)
     print("wrote guides/ (" + str(len(GUIDES)) + " guides + index) and sitemap.xml")

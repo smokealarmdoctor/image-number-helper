@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to audit image alt text on any web page – Image Number Helper</title>
+  <meta name="description" content="A step-by-step alt text audit: a copy-paste console snippet that lists every image&#x27;s alt status, what to flag, how to decide what each image needs, and how to report the results." />
+  <link rel="canonical" href="https://image-number-helper-site-hecb.onrender.com/guides/audit-image-alt-text-on-a-page.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon32.png" />
+  <link rel="stylesheet" href="../assets/site.css" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to audit image alt text on any web page" />
+  <meta property="og:description" content="A step-by-step alt text audit: a copy-paste console snippet that lists every image&#x27;s alt status, what to flag, how to decide what each image needs, and how to report the results." />
+  <meta property="og:image" content="https://image-number-helper-site-hecb.onrender.com/assets/og.jpg" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"How to audit image alt text on any web page","description":"A step-by-step alt text audit: a copy-paste console snippet that lists every image's alt status, what to flag, how to decide what each image needs, and how to report the results.","datePublished":"2026-11-23","dateModified":"2026-11-23","image":"https://image-number-helper-site-hecb.onrender.com/assets/og.jpg","author":{"@type":"Organization","name":"Image Number Helper"},"publisher":{"@type":"Organization","name":"Image Number Helper"},"mainEntityOfPage":"https://image-number-helper-site-hecb.onrender.com/guides/audit-image-alt-text-on-a-page.html"}
+  </script>
+  <meta name="google-site-verification" content="uF9GxStpmtIZK4b-jRbVWf_90VmLa--awpbrayp30to" />
+</head>
+<body>
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="../"><img src="../assets/icon48.png" alt="" width="32" height="32" />Image Number Helper</a>
+    <nav><a class="hide-sm" href="./">Guides</a><a class="hide-sm" href="../#pricing">Pricing</a><a class="btn primary small" href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Add to Chrome</a></nav>
+  </div></header>
+  <main class="doc">
+    <h1>How to audit image alt text on any web page</h1>
+    <p class="meta">Published November 23, 2026</p>
+
+    <p>An alt text audit answers one question for every image on a page: <i>does a person who can’t see this image get what they need?</i> It takes about ten minutes per page once you have a routine. This guide gives you the routine, a free snippet that works in any browser, and a way to report the results.</p>
+
+    <h2>Step 1: list every image and its alt status</h2>
+    <p>Open the page, open the browser Console (F12, then the Console tab), paste this and press Enter:</p>
+    <div class="box"><pre style="margin:0;white-space:pre-wrap;overflow-wrap:anywhere"><code>console.table([...document.images].map((img, i) =&gt; ({
+  n: i + 1,
+  alt: !img.hasAttribute('alt') ? 'MISSING' : img.alt === '' ? '(empty)' : img.alt,
+  shown: img.width + '×' + img.height,
+  file: (img.currentSrc || img.src).split('/').pop().split('?')[0].slice(0, 40)
+})))</code></pre></div>
+    <p>You get a table with one row per <code>&lt;img&gt;</code>: its position, its alt text (or <b>MISSING</b> / <b>(empty)</b>), its displayed size and its file name. Scroll the page to the bottom first so lazy-loaded images are included, then run it again.</p>
+    <p>Two limits to know about. The numbers here follow the page’s source order, so they will not always match the badges an extension draws on the screen. And it only sees <code>&lt;img&gt;</code> elements: images used as CSS backgrounds, inline SVG and <code>&lt;canvas&gt;</code> need to be checked by hand.</p>
+
+    <h2>Step 2: sort each row into one of four groups</h2>
+    <ul>
+      <li><b>MISSING.</b> No <code>alt</code> attribute. This is the real failure: screen readers may read out the file name instead. Every row here needs a decision.</li>
+      <li><b>(empty).</b> <code>alt=""</code> tells assistive technology to skip the image. Correct for decoration, wrong for anything that carries meaning, such as a product photo or a chart. Look at each one.</li>
+      <li><b>Alt text that is really a file name,</b> such as <code>IMG_2041.jpg</code> or <code>hero-final-v3</code>. It looks present but tells the reader nothing.</li>
+      <li><b>Alt text that is present but weak:</b> “image”, “photo”, the same sentence repeated on every image, or a paragraph-long description of a simple icon.</li>
+    </ul>
+
+    <h2>Step 3: decide what each image needs</h2>
+    <p>Ask what the image is <i>for</i>, not what it looks like:</p>
+    <ul>
+      <li><b>Informs</b> (photo, chart, diagram): a short description of the point it makes. For a chart, give the takeaway and put the data in the text nearby.</li>
+      <li><b>Acts</b> (logo that links home, icon button): describe the destination or action, such as “Home” or “Search”, not the picture.</li>
+      <li><b>Decorates</b> (divider, background flourish, a photo that only repeats the text beside it): <code>alt=""</code>.</li>
+    </ul>
+    <p>The W3C’s <a href="https://www.w3.org/WAI/tutorials/images/decision-tree/" rel="noopener">alt text decision tree</a> walks through the same questions. Missing text alternatives fall under WCAG success criterion 1.1.1, Non-text Content.</p>
+
+    <h2>Step 4: write the report so someone can act on it</h2>
+    <p>A list of file names is hard to fix; a list of <i>which image on which page</i> is easy. For each finding record the page address, the image number, what it shows, the problem (missing, empty but meaningful, file name, weak) and the suggested alt text. In a meeting or a ticket, the image number is what lets everyone find the same image without describing it.</p>
+
+    <h2>The faster way: numbers on the page</h2>
+    <p><a href="../">Image Number Helper</a> draws a numbered badge on every image, so you can see which row of your notes is which picture and say “image 12 has no alt text” in a call. Its Pro <b>Copy report</b> button lists each number with its alt text, displayed size, original size and file name as Markdown, plain text or CSV, and flags images with missing or empty alt text. The free version numbers the first 8 images on a page, which is enough to try the workflow; Pro ($2.99, one time) removes the limit and adds the report.</p>
+    <p>Related: <a href="find-images-with-missing-alt-text.html">a short guide to finding images with missing alt text</a> and <a href="reference-images-in-a-design-review.html">how to reference images in a design review</a>.</p>
+
+    <div class="box" style="margin-top:32px">
+      <p style="margin:0 0 10px"><b>Try it free.</b> Image Number Helper puts a numbered badge on every image of the page you're looking at. The first 8 images on any page are free; Pro ($2.99, one time) removes the limit and adds the meeting report and numbered screenshots.</p>
+      <a class="btn primary" href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Add to Chrome</a>
+    </div>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Image Number Helper</span><nav>
+    <a href="./">Guides</a><a href="../support.html">Support</a><a href="../refund.html">Refunds</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a><a href="https://chromewebstore.google.com/detail/image-number-helper-pro/oblgohgggijhcpaaimpcnkajklhfkelf" rel="noopener">Chrome Web Store</a>
+  </nav></div></footer>
+</body>
+</html>
