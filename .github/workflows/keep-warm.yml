@@ -1,0 +1,15 @@
+# Render's free web services sleep after ~15 minutes idle, and waking takes 15-60 s.
+# The licence server is the page a buyer lands on right after paying, so ping it often.
+name: keep-licence-server-warm
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+permissions: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Ping /health
+        run: curl -fsS --max-time 90 --retry 2 --retry-delay 5 -o /dev/null -w "status %{http_code} in %{time_total}s\n" https://image-number-helper-license-hecb.onrender.com/health
